@@ -45,25 +45,25 @@ function locations(){
 let test = locations();
 console.log(test);
 
-// const filterFunction =( key, value, data )=>{
-//    return data.filter((element) => element[key] === value);
-// };
+const filterFunction =( key, value, data )=>{
+   return data.filter((element) => element[key] === value);
+};
 
-// const loadFilters=()=>{
-//     let filterData = dummyData;
+const loadFilters=()=>{
+    let filterData = dummyData;
 
-//     for(let filter of filters){
-//         const key = Object.keys(filter)[0];
-//         const value = Object.values(filter)[0];
+    for(let filter of filters){
+        const key = Object.keys(filter)[0];
+        const value = Object.values(filter)[0];
 
-//        filterData = filterFunction(key, value, filterData) 
-//     }
+       filterData = filterFunction(key, value, filterData) 
+    }
 
-//     return filterData
-// };
+    return filterData
+};
 
-// let result = loadFilters();
-// console.log(result);
+let result = loadFilters();
+console.log(result);
 
 // const yearArray = Array.from( {length: 2030 - 2012 + 1}, (_, index)=> 2012 + index );
 

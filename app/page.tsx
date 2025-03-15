@@ -6,10 +6,10 @@ import styles from "./page.module.css";
 import RecentAlbums from "@/components/RecentAlbums";
 import SpotifyTopSongs from "@/components/SpotifyTopSongs";
 
-
 export default function Home() {
   const { albums, spotifyData } = useData();
  
+    
 
   return (
     <div className={styles.page}>

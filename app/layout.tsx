@@ -7,12 +7,17 @@ import Footer from "@/components/Footer";
 
 
 async function fetchData() {
-  const { data: albums, error } = await supabase.from("albums").select("*");
-  if (error) console.error("Supabase Error:", error);
+  try {
+    const { data: albums } = await supabase.from("albums").select("*");
+    const { data: personnel } = await supabase.from("personnel").select("*");
+    const spotify = await getSpotifyData();
+    console.log(personnel)
+    return { albums, personnel, spotify };
 
-  const spotify = await getSpotifyData();
-  return { albums, spotify };
-}
+  } catch (error) {
+    console.error("Supabase Error:", error);
+  }
+};
 
 export default async function RootLayout({
   children,

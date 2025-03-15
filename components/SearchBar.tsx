@@ -1,74 +1,101 @@
-'use client'
+'use client';
 
-import React from 'react';
-import { useData, generateLocations } from '@/app/context/DataContext';
+import React, { useEffect, useState } from 'react';
+import { useData, generateLocations, generateCreativeProcess, SQLFilter } from '@/app/context/DataContext';
 
-// Data for dropdown menus
-const years = Array.from({ length: 2030 - 2012 + 1 }, (_, index) => 2012 + index);
-const creativeProcess = [
-    "Composed", "Improvised", "Partial improvised",
-    "Improvised with post production over dubs",
-    "Partial improvised with post production over dubs",
-];
-const recordingType = [
-    "Studio",
-    "Live"
-];
+type UserFilters = {
+    year: string;
+    creative_process: string;
+    recorded_at: string;
+    recording_type: string;
+    personnel: string;
+};
 
 
 function SearchBar() {
     // Variables
-    const { albums } = useData();
+    const { albums, personnel, setUserFilters, setFilter, filter, userFilters } = useData();
     const locations = generateLocations();
-    console.log("locations", locations);
-
-
+    const creativeProcess = generateCreativeProcess();
+    const years = Array.from({ length: 2030 - 2012 + 1 }, (_, index) => 2012 + index);
+    const recordingType = [ "Studio", "Live"];
+    
 
     // Dropdown selectors
-    const yearSelector = years.map((year, index) => <option value={year}>{year}</option>);
-    const creativeSelector = creativeProcess.map((process) => <option value={process}>{process}</option>);
-    const locationSelector = locations.map((location)=> <option value={location}>{location}</option> );
-    const recordingTypeSelector = recordingType.map((type)=> <option value={type}>{type}</option>);
+    const yearSelector = years.map((year, index) => <option key={index} value={year}>{year}</option>);
+    const creativeSelector = creativeProcess.map((process: string, index: number) => <option key={index} value={process}>{process}</option>);
+    const locationSelector = locations.map((location: string, index: number)=> <option key={index} value={location}>{location}</option> );
+    const recordingTypeSelector = recordingType.map((type, index: number)=> <option key={index} value={type}>{type}</option>);
+    const personnelSelector = personnel.map((person: string, index: number)=> <option key={index + 1} value={person.name}> {person.name}</option>);
+    
+    //Functions
+    const handleSubmit=(event: React.FormEvent<HTMLFormElement>)=>{
+        event.preventDefault();
+        setFilter(true );
+        SQLFilter(userFilters,personnel);
+    };
 
+    const handleRefresh=()=>{
+            setUserFilters({
+            year: "",
+            creative_process: "",
+            location: "",
+            recording_type: "",
+            personnel: "",
+        });
+       
+    };
+
+    // useEffect(() => {
+    //     if (filter) {
+           
+    //     }
+    // }, [filter]);
+
+    const handleFilters=(event: React.ChangeEvent<HTMLSelectElement>)=>{
+      const { name, value } = event.target;
+      
+      setUserFilters((prev)=> ({...prev, [name]: value}));
+    };
+
+//   useEffect(()=>{
+//     console.log(userFilters)
+//   },[userFilters]);
 
     return (
         <div>
-            <label for="year"></label>
+          <form>
 
-            <select name="year" id="year" aria-placeholder='Year'>
-                <option value="" disabled selected>Year</option>
+            <select key="year" name="year" value={userFilters.year} id="year" onChange={(event)=> handleFilters(event)}>
+                <option value="" disabled>Year</option>
                 {yearSelector}
             </select>
 
-            <select name="creative process" id="creative process" aria-placeholder='creative process'>
-                <option value="" disabled selected>Creative process</option>
+            <select key="creative process" name="creative_process" value={userFilters.creative_process} id="creative_process" onChange={(event)=> handleFilters(event)}>
+                <option value="" disabled>Creative process</option>
                 {creativeSelector}
             </select>
 
-            <select name="location" id="location" aria-placeholder='location'>
-                <option value="" disabled selected>Recorded at</option>
+            <select key="location" name="location" value={userFilters.location} id="location" onChange={(event)=> handleFilters(event)}>
+                <option value="" disabled>Location</option>
                 {locationSelector}
             </select>
 
-            <select name="recording type" id="recording type" aria-placeholder='recording type'>
-                <option value="" disabled selected>Recording type</option>
+            <select key="recording type" name="recording_type" value={userFilters.recording_type} id="recording_type" onChange={(event)=> handleFilters(event)}>
+                <option value="" disabled>Recording type</option>
                 {recordingTypeSelector}
             </select>
 
-            <select name="personnel" id="personnel" aria-placeholder='personnel'>
-                <option value="" disabled selected>Personnel</option>
-                {recordingTypeSelector}
+            <select key="personnel" name="personnel" value={userFilters.personnel} id="personnel" onChange={(event)=> handleFilters(event)}>
+                <option value="" disabled>Personnel</option>
+                <option value="CORE" >CORE</option>
+                {personnelSelector}
             </select>
-
+            <button type="submit" onClick={handleSubmit}>Apply</button>
+            <button type="button" onClick={handleRefresh}>Refresh</button>
+            </form>
         </div>
     )
 }
 
 export default SearchBar;
-
-// Presentation
-// should return all the nessary components of the filter ui
-//
-// Business
-// Should return the updated list of albums for the discograph to
-// render from 

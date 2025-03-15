@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Album from '../../components/Album';
 import SearchBar from '@/components/SearchBar';
 import { useData } from '../context/DataContext';
@@ -8,10 +8,10 @@ import { useData } from '../context/DataContext';
 
 
 export default function Discography() {
-  const { albums } = useData();
+  const { albums, filter } = useData();
 
 
-  const discography = albums.map((album) => {
+  const discography = !filter ? albums.map((album) => {
     return (
       <Album
         title={album.title}
@@ -21,7 +21,7 @@ export default function Discography() {
         key={album.id}
       />
     )
-  });
+  }): "";
 
 
   return (
