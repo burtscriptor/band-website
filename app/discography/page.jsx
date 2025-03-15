@@ -19,6 +19,7 @@ export default function Discography() {
         recording_technique={album.recording_technique}
         id={album.id}
         key={album.id}
+        cover_url={album.cover_url}
       />
     )
   }): "";

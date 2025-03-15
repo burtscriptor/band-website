@@ -11,7 +11,7 @@ async function fetchData() {
     const { data: albums } = await supabase.from("albums").select("*");
     const { data: personnel } = await supabase.from("personnel").select("*");
     const spotify = await getSpotifyData();
-    console.log(personnel)
+    console.log(albums)
     return { albums, personnel, spotify };
 
   } catch (error) {

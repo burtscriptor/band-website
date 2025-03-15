@@ -3,6 +3,7 @@
 
 
 import React from 'react';
+import PlayLinks from './PlayLinks';
 
 interface AlbumDetailProps {
     title: string;
@@ -37,7 +38,9 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
             {released ? <p>Released: {released}</p> : ""}
             {recorded_at ? <p>Recorded at: {recorded_at}</p> : ""}
             <p>Recording_technique: {recording_technique}</p>
+            <p>Tracklist: </p>
             {notes ? <p>Notes: {notes}</p> : ""}
+            <PlayLinks link1={""} link2={""}/>
             
         </div>
     )

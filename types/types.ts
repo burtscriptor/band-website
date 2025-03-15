@@ -1,4 +1,4 @@
-export interface  Album {
+export interface  AlbumType {
     id: number;
     title: string;
     released: string;
@@ -8,6 +8,7 @@ export interface  Album {
     recorded_at: string;
     personell: string;
     notes: string;
+    cover_url:string;
 }
 
 export interface SpotifyTrack {

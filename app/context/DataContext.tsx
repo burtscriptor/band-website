@@ -90,13 +90,16 @@ export const SQLFilter = async (userFilters, peronnel) => {
     let query = supabase.from("albums").select("*");
     let queryWithPersonnel = supabase.from("albums").select("*, album_personnel!inner (album_id")
 
-    if(userFilters.personnel){
-        console.log("true", userFilters.personnel)
+    if(userFilters.personnel === "CORE"){
+        console.log("true Core", userFilters.personnel)
+        // work out how to use queryWithPersonnel with multple people
+    }else if(userFilters.personnel){
+        console.log("no core but p", userFilters.personnel)
     }
+
+    // without personnelFilter
     for (const filter in userFilters) {
-        
-
-
+    
 
         if (userFilters[filter]) {
             if (filter === "year") {
