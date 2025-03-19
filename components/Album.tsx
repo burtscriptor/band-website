@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-
+import styles from '../app/styles/Album.module.css';
 interface AlbumDetailProps {
   title: string;
   date: string;
@@ -14,9 +14,10 @@ interface AlbumDetailProps {
 const Album:React.FC<AlbumDetailProps> = ({ title, date, recording_technique, id, cover_url }) => {
   return (
     <Link href={`/discography/${id}`}>
-    <div key={id}>
-    <img src={cover_url} width={100} height={100} alt="Album cover" />
-      <p>{id} {title}</p>
+    <div className={styles.tile} key={id}>
+    <img src={cover_url} alt="Album cover" />
+      <p>{title}</p>
+      <p>{date}</p>
      
     </div>
     </Link>

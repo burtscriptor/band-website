@@ -1,9 +1,11 @@
-'use client'
+'use client';
 
 import React, { useEffect } from 'react';
+import styles from '../styles/Discography.module.css';
 import Album from '../../components/Album';
 import SearchBar from '@/components/SearchBar';
 import { useData } from '../context/DataContext';
+
 
 
 
@@ -29,7 +31,7 @@ export default function Discography() {
     <div>
       Discography
       <SearchBar />
-      {discography}
+      <div className={styles.grid}>{discography}</div>
     </div>
   )
 };

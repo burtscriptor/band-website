@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import SocialMediaIcons from './SocialMediaIcons';
+import CopyRight from './CopyRight';
 
 function Footer() {
   return (
     <div>
-      Footer
+      <SocialMediaIcons />
+      <CopyRight />
     </div>
   )
 };

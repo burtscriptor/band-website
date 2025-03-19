@@ -1,0 +1,12 @@
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(400px);
+    gap: 16px;
+    border:1px dashed orange;
+  }
+  
+  .grid img {
+    height: 200px;
+  }
