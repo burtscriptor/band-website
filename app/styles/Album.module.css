@@ -1,9 +1,44 @@
-.tile {
-    padding:20px;
-    display:flex;
+.albumTile {
+    box-sizing: border-box;
+    display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    border:1px dashed greenyellow;
-};
-    
+    padding-top: 30px;
+    color:black;
+    text-decoration: none;
+    border-right:0.5px solid pink;
+    border-left: 0.5px solid transparent;
+    font-weight: 400;
+}
+
+.albumTile:last-of-type {
+    border-left:0.5px solid pink;
+    border-right:0px;
+}
+
+.albumTile p {
+    width: 20ch;
+    text-align: left;
+    width: 200px;
+    text-transform: uppercase;
+    font-size: large;
+}
+
+.albumTile p:last-child {
+    margin-top: 2px;
+    font-size: x-small;
+    text-transform: none;
+}
+
+
+.albumTile:hover {
+    background: black;
+    cursor: pointer;
+    color:white;
+}
+
+
+.albumTile img {
+    margin-bottom: 20px;
+    height: 200px;
+}

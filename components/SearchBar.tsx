@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useData, generateLocations, generateCreativeProcess, SQLFilter } from '@/app/context/DataContext';
+import Styles from '../app/styles/SearchBar.module.css'
 
 type UserFilters = {
     year: string;
@@ -63,7 +64,7 @@ function SearchBar() {
 //   },[userFilters]);
 
     return (
-        <div>
+        <div className={Styles.searchBarContainer}>
           <form>
 
             <select key="year" name="year" value={userFilters.year} id="year" onChange={(event)=> handleFilters(event)}>

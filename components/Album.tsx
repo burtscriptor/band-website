@@ -11,20 +11,21 @@ interface AlbumDetailProps {
   cover_url: string;
 }
 
-const Album:React.FC<AlbumDetailProps> = ({ title, date, recording_technique, id, cover_url }) => {
+const Album: React.FC<AlbumDetailProps & { className?: string }> = ({ className, title, date, recording_technique, id, cover_url }) => {
+
   return (
-    <Link href={`/discography/${id}`}>
-    <div className={styles.tile} key={id}>
-    <img src={cover_url} alt="Album cover" />
-      <p>{title}</p>
-      <p>{date}</p>
-     
-    </div>
+
+    <Link className={className ? styles[className] : ''} key={id} onMouseEnter={console.log()} href={`/discography/${id}`} >
+        <img src={cover_url} alt="Album cover" />
+        <p>{title}</p>
+        <p>{date}</p>
     </Link>
   )
 };
 
 export default Album;
+
+
 
 // For displaying album information on the discography page
 // Wrap in a link tag to the direct page

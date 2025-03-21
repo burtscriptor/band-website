@@ -1,0 +1,87 @@
+.searchBarContainer {
+    margin-bottom: 20px;
+    box-sizing: border-box; 
+}
+
+.searchBarContainer select {
+    border:1px solid pink;
+    border-radius: 14px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 12px;
+}
+
+.searchBarContainer button {
+    border-radius: 14px;
+    border:0.5px dashed transparent;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: black;
+    color:white;
+
+    transition: border 0.3s ease;
+}
+
+.searchBarContainer button:first-of-type {
+    box-sizing: border-box; 
+    margin-right: 12px;
+}
+
+.searchBarContainer button:hover {
+    background-color: white;
+    color: black;
+    border:0.5px dashed black;
+    cursor:pointer;
+}
+
+
+
+.searchBarContainer select:first-of-type {
+    position: relative;
+    padding-left: 35px;
+    background-image: url('/clock-with-white-face.png'); 
+    background-size: 16px 16px; 
+    background-position: 10px ; 
+    background-repeat: no-repeat; 
+  }
+  
+
+  .searchBarContainer select:nth-of-type(2) {
+    position: relative;
+    padding-left: 35px;
+    background-image: url('/light-bulb.png'); 
+    background-size: 16px 16px; 
+    background-position: 10px ; 
+    background-repeat: no-repeat; 
+  }
+  
+  .searchBarContainer select:nth-of-type(3) {
+    position: relative;
+    padding-left: 35px;
+    background-image: url('/location.png'); 
+    background-size: 16px 16px; 
+    background-position: 10px ; 
+    background-repeat: no-repeat; 
+  }
+
+  .searchBarContainer select:nth-of-type(4) {
+    position: relative;
+    padding-left: 35px;
+    background-image: url('/microphone.png'); 
+    background-size: 16px 16px; 
+    background-position: 10px ; 
+    background-repeat: no-repeat; 
+  }
+
+  .searchBarContainer select:nth-of-type(5) {
+    position: relative;
+    padding-left: 35px;
+    background-image: url('/teamwork.png'); 
+    background-size: 16px 16px; 
+    background-position: 10px ; 
+    background-repeat: no-repeat; 
+  }

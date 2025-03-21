@@ -1,12 +1,13 @@
+.discographyContainer {
+  margin-left: 15px;
+}
+
+.discographyContainer h1 {
+ margin-bottom: 10px;
+}
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: repeat(400px);
-    gap: 16px;
-    border:1px dashed orange;
-  }
-  
-  .grid img {
-    height: 200px;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); 
+  grid-auto-rows: minmax(375px, auto);
+}

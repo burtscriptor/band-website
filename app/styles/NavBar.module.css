@@ -1,0 +1,23 @@
+.navContainer {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color:black;
+}
+
+.navContainer a {
+    display: inline;
+    padding:0px;
+    color:black;
+}
+.navContainer h1 {
+    display: inline;
+    font-size: 56px;
+    margin-right: 10px;
+}
+
+.navContainer a {
+       padding:10px;
+       text-decoration: none;
+       font-weight: 600;
+}
+
