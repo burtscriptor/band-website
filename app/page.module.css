@@ -1,0 +1,20 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.upperContainer {
+    height: 40vh;
+    background-image: url('/Wollongong.jpg'); /* Adjust the path */
+    background-size: cover; /* Ensures the image covers the entire area */
+    
+    background-repeat: no-repeat; /* Prevents repeating */
+    width: 100%; /* Full width */
+
+}
+
+.lowerContainer {
+    display: flex;
+    flex-direction: row;
+}

@@ -2,22 +2,25 @@
 'use client';
 
 import { useData } from "./context/DataContext";
-import styles from "./page.module.css";
+import Styles from "./page.module.css";
 import RecentAlbums from "@/components/RecentAlbums";
 import SpotifyTopSongs from "@/components/SpotifyTopSongs";
 
 export default function Home() {
-  const { albums, spotifyData } = useData();
+  const { albums, spotifyData } = useData();  
  
     
 
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        Home
-        <RecentAlbums albums={albums || []} />
-        <SpotifyTopSongs tracks={spotifyData || []} />
-      </main>
+  return (  
+    <div className={Styles.pageContainer}>
+      <div className={Styles.lowerContainer}>
+       <SpotifyTopSongs tracks={spotifyData || []} />
+       <RecentAlbums albums={albums || []} /> 
+       </div>
+       <div className={Styles.upperContainer}></div>
+       
+       
+       
     </div>
   );
 }

@@ -1,0 +1,10 @@
+.homeContainer {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 200px)); 
+}   
+
+.title h2 {
+    padding-left:48px;
+    color:#1E40AF;
+    background-color: white;
+}

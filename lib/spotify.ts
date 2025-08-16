@@ -26,6 +26,7 @@ export const getSpotifyData = async(): Promise<FilteredTrack[] | null> => {
         }
 
         const data = await response.json();
+        console.log(data)
         return filterSpotifyData(data?.tracks ?? []);
 
     } catch (error) {
@@ -57,7 +58,7 @@ const filterSpotifyData = (spotify_data: SpotifyTrack[]): FilteredTrack[] => {
     return spotify_data.map((element) => ({
         name: element.name,
         album: element.album.name,
-        image: element.album.images?.[2]?.url || element.album.images?.[0]?.url || "", 
+        image: element.album.images?.[1]?.url || element.album.images?.[0]?.url || "", 
         url: element.external_urls.spotify,
     }));
 };

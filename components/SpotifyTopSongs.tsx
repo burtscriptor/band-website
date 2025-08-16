@@ -1,6 +1,8 @@
 import React from 'react';
 import { FilteredTrack } from "@/types/types";
 import SpotifySong from './SpotifySong';
+import styles from '../app/styles/Home.module.css'
+
 
 type SpotifyTopSongsProps = {
   tracks: FilteredTrack[];
@@ -8,19 +10,27 @@ type SpotifyTopSongsProps = {
 
 const SpotifyTopSongs: React.FC<SpotifyTopSongsProps> = ({ tracks }) => {
   console.log(tracks);
-  const topFive = tracks.slice(0,3)
+  const topFive = tracks.slice(0,3).map((song, index)=> (
+    <SpotifySong className="homeTile"  
+    name={song.name}
+    album={song.album}
+    image={song.image}
+    url={song.url}
+    />
+  ))
+
+
   return (
-    <div>
-      <h2>Most popular songs from Spotify</h2>
-      {topFive.map((song, index)=> (
-        <SpotifySong   
-        name={song.name}
-        album={song.album}
-        image={song.image}
-        url={song.url}
-        />
-      ))}
+    <>
+    <div className={styles.container}>
+      <div className={styles.title}>
+        <h2>Trending on Spotify</h2>
+      </div>
+     <div className={styles.homeContainer}>
+      {topFive}
     </div>
+    </div>
+    </>
   )
 }
 
