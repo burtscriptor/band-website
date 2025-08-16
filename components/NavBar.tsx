@@ -12,7 +12,7 @@ const NavBar: React.FC = ()=> {
     
     <div className={Styles.navContainer}>
     <Link href="/">
-    <h1>GONG</h1>
+    <h1>WOLLONGONG</h1>
     </Link>
     <Link href="/discography">Discography</Link>
       <Link href="/">Home</Link>

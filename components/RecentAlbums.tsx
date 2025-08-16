@@ -2,6 +2,7 @@
 import React from 'react';
 import { AlbumType } from '@/types/types';
 import Album from './Album';
+import Styles from '../app/styles/Home.module.css'
 
 interface RecentAlbumsProps {
   albums: AlbumType[];
@@ -10,22 +11,32 @@ interface RecentAlbumsProps {
 
 const RecentAlbums: React.FC<RecentAlbumsProps> = ({ albums }) => {
     const mostRecent = albums.slice(0,3);
+
+    const result =  mostRecent.map((album)=> (
+      <Album className="homeTile"
+      title={album.title}
+      date={album.released ? album.released : album.recorded}
+      recording_technique={album.recording_technique}
+      id={album.id}
+      key={album.id}
+      cover_url={album.cover_url}
+      />
+    ))
    
 
   return (
-    <div>
-      <h2>Recent albums</h2>
-      {mostRecent.map((album)=> (
-        <Album   
-        title={album.title}
-        date={album.released ? album.released : album.recorded}
-        recording_technique={album.recording_technique}
-        id={album.id}
-        key={album.id}
-        cover_url={album.cover_url}
-        />
-      ))}
+    <>
+
+    <div className={Styles.container}>
+    <div className={Styles.title}>
+    <h2>Recent Offerings</h2>
     </div>
+    <div className={Styles.homeContainer}>
+      
+     {result}
+    </div>
+    </div>
+    </>
   )
 };
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import SocialMediaIcons from './SocialMediaIcons';
 import CopyRight from './CopyRight';
+import styles from '../app/styles/Footer.module.css';
 
 function Footer() {
   return (
-    <div>
+    <div className={styles.footerWrapper}>
       <SocialMediaIcons />
       <CopyRight />
     </div>
@@ -13,11 +14,3 @@ function Footer() {
 
 export default Footer;
 
-// links to socials - insta, facebook, youtube, 
-// links to bandcamp, spotify
-// link to contact
-// ? form for signing up to mailing list
-// All Rights Reserved Wollongong The Band 2025
-
-// Style
-// Have the footer fixed to the bottom of the UI

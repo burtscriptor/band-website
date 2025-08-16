@@ -1,44 +1,61 @@
-.albumTile {
+.albumTile, .homeTile {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px;
     color:black;
     text-decoration: none;
-    border-right:0.5px solid pink;
-    border-left: 0.5px solid transparent;
     font-weight: 400;
 }
 
-.albumTile:last-of-type {
-    border-left:0.5px solid pink;
-    border-right:0px;
+.albumTile {
+    padding-top: 40px;
 }
 
 .albumTile p {
-    width: 20ch;
-    text-align: left;
     width: 200px;
     text-transform: uppercase;
     font-size: large;
 }
 
-.albumTile p:last-child {
+.albumTile p:last-child, .homeTile p:last-child {
     margin-top: 2px;
     font-size: x-small;
     text-transform: none;
 }
 
 
-.albumTile:hover {
+.albumTile:hover, .homeTile:hover {
     background: black;
     cursor: pointer;
     color:white;
 }
 
+.homeTile  {
+   border-color: transparent;
+   /* margin-bottom: 60px; */
+   padding-top: 10px;
+   color:lime;
+}
 
-.albumTile img {
+.albumTile img, .homeTile img{
     margin-bottom: 20px;
     height: 200px;
+}
+
+.homeTile img {
+    height: 100px;
+    border-radius: 14px;
+}
+
+.homeTile p {
+    width: 100px;
+    text-transform: uppercase;
+    font-size: small;
+    text-transform: none;
+    text-decoration: none;
+}
+
+.noTextDecoration {
+    text-decoration: none;
 }

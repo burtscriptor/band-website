@@ -1,0 +1,19 @@
+.footerWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}
+
+.socialMediaContainter {
+    border: 1px solid pink;
+    color:black;
+}
+
+.socialMedia  {
+    display: flex;
+    background-color: aqua;
+    height: auto;
+}

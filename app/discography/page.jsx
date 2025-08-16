@@ -34,17 +34,3 @@ export default function Discography() {
   )
 };
 
-// General
-// need to set the function on as a React.FC, that accepts props
-// need to define type of props
-// pass props supabase albums as props
-// wrap each in a link tag to /discography/{id} - which is another page with a component?
-// map through props and display albums
-
-// Search Component
-
-//Album component
-// make a component for the album tiles and then pass the props down to 
-// so data.map((album)=> {
-// <AlbumTile name={album.name} etc />
-//})

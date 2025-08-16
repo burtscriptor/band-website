@@ -2,10 +2,11 @@
     margin-top: 10px;
     margin-bottom: 20px;
     color:black;
+    width: fit-content;
 }
 
 .navContainer a {
-    display: inline;
+   display: inline;
     padding:0px;
     color:black;
 }
