@@ -9,7 +9,7 @@
 }
 
 .albumTile {
-    padding-top: 40px;
+     padding-top: 20px; 
 }
 
 .albumTile p {
@@ -25,15 +25,14 @@
 }
 
 
-.albumTile:hover, .homeTile:hover {
+/* .albumTile:hover, .homeTile:hover {
     background: black;
     cursor: pointer;
     color:white;
-}
+} */
 
 .homeTile  {
    border-color: transparent;
-   /* margin-bottom: 60px; */
    padding-top: 10px;
    color:lime;
 }

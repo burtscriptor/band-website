@@ -26,7 +26,7 @@ export const getSpotifyData = async(): Promise<FilteredTrack[] | null> => {
         }
 
         const data = await response.json();
-        console.log(data)
+        console.log('spotify respone data',data)
         return filterSpotifyData(data?.tracks ?? []);
 
     } catch (error) {

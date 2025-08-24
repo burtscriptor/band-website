@@ -1,10 +1,21 @@
-.searchBarContainer {
-  margin-top: 20px;
-    margin-bottom: 20px;
-    box-sizing: border-box; 
+.searhBarWrapper {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
 }
 
+.searchBarContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box; 
+}
+
+
 .searchBarContainer select {
+    align-self: center;
     border:1px solid black;
     border-radius: 14px;
     padding-right: 12px;
@@ -15,6 +26,7 @@
     background-size: 16px 16px; 
     background-position: 10px ; 
     background-repeat: no-repeat;
+    max-width: 300px;
 }
 
 .searchBarContainer select:first-of-type {
@@ -61,5 +73,9 @@
     cursor:pointer;
 }
 
-
+.counter {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
 

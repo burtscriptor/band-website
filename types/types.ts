@@ -5,10 +5,7 @@ export interface  AlbumType {
     recorded: string;
     creative_process: string;
     recording_technique: string;
-    recorded_at: string;
-    personell: string;
-    notes: string;
-    cover_url:string;
+    image_url:string;
 }
 
 export interface SpotifyTrack {
@@ -25,7 +22,7 @@ export interface SpotifyTrack {
 export interface FilteredTrack {
     name: string;
     album: string;
-    image: string;
+    image_url: string;
     url: string;
 }
 

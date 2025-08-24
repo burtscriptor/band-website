@@ -1,19 +1,20 @@
 .footerWrapper {
-    display: flex;
-    flex-direction: row;
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: 2fr 0.5fr;
     justify-content: space-evenly;
-    position: fixed;
-    bottom: 0px;
     width: 100%;
 }
 
-.socialMediaContainter {
-    border: 1px solid pink;
-    color:black;
+.socialMediaContainer {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
 }
 
 .socialMedia  {
     display: flex;
-    background-color: aqua;
     height: auto;
 }
+

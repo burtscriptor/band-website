@@ -19,7 +19,7 @@ const RecentAlbums: React.FC<RecentAlbumsProps> = ({ albums }) => {
       recording_technique={album.recording_technique}
       id={album.id}
       key={album.id}
-      cover_url={album.cover_url}
+      image_url={album.image_url}
       />
     ))
    

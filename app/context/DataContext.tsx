@@ -21,9 +21,6 @@ const DataContext = createContext<{
     userFilters: any;
     setUserFilters: (userFilters: UserFilters) => void;
 
-    personnel: any[];
-    setPersonnel: (personnel: any[]) => void;
-
     spotifyData: any;
     setSpotifyData: (data: any) => void;
 
@@ -34,21 +31,9 @@ export function DataProvider({ children, initialData }: { children: React.ReactN
 
     const [albums, setAlbums] = useState(initialData.albums);
 
-    const [filter, setFilter] = useState(false);
-
-    const [userFilters, setUserFilters] = useState<any>({
-        year: "",
-        creative_process: "",
-        location: "",
-        recording_type: "",
-        personnel: "",
-    });
-
-    const [personnel, setPersonnel] = useState(initialData.personnel);
-
     const [spotifyData, setSpotifyData] = useState(initialData.spotify);
 
-    return <DataContext.Provider value={{ albums, setAlbums, filter, setFilter, userFilters, setUserFilters, personnel, setPersonnel, spotifyData, setSpotifyData }}>{children}</DataContext.Provider>
+    return <DataContext.Provider value={{ albums, setAlbums, spotifyData, setSpotifyData }}>{children}</DataContext.Provider>
 };
 
 export function useData() {
@@ -57,20 +42,6 @@ export function useData() {
         throw new Error("useData must be used within a DataProvider");
     }
     return context;
-};
-
-export function generateLocations() {
-    const { albums } = useData();
-    if (!albums) return [];
-
-    const result = albums.reduce((acc: string[], album) => {
-        if (!acc.includes(album.location)) {
-            acc.push(album.location)
-        }
-        return acc;
-    }, [])
-    return result;
-
 };
 
 export function generateCreativeProcess() {
@@ -86,61 +57,7 @@ export function generateCreativeProcess() {
     }, [])
     return result;
 };
-export const SQLFilter = async (userFilters, peronnel) => {
-    let query = supabase.from("albums").select("*");
-    let queryWithPersonnel = supabase.from("albums").select("*, album_personnel!inner (album_id")
 
-    if(userFilters.personnel === "CORE"){
-        console.log("true Core", userFilters.personnel)
-        // work out how to use queryWithPersonnel with multple people
-    }else if(userFilters.personnel){
-        console.log("no core but p", userFilters.personnel)
-    }
 
-    // without personnelFilter
-    for (const filter in userFilters) {
-    
 
-        if (userFilters[filter]) {
-            if (filter === "year") {
-                query = query.or(
-                    `released.ilike.%${userFilters[filter]}%`,
-                    `recorded.ilike.%${userFilters[filter]}%`
-                );
-            } else if (filter === "personnel") {
-                const name = userFilters[filter];
-                if (name === "CORE") {
-                    const CORE = COREPersonnel();
-                }
-                const id = findPersonnelId(name, peronnel);
-                console.log(id);
 
-            }
-
-            else {
-                query = query.eq(filter, userFilters[filter]);
-            }
-        }
-    }
-    console.log(query);
-    const { data, error } = await query;
-
-    if (error) {
-        console.error("Error executing query:", error);
-    } else {
-        console.log("Data retrieved:", data);
-    }
-};
-
-const findPersonnelId = (name, peronnel) => {
-
-    for (let person of peronnel) {
-        if (person.name === name) {
-            return person.id
-        }
-    }
-};
-
-const COREPersonnel=()=>{
-    return [1,2,3,4]
-};

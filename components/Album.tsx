@@ -3,20 +3,22 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from '../app/styles/Album.module.css';
+
 interface AlbumDetailProps {
   title: string;
   date: string;
   recording_technique: string;
   id: number;
-  cover_url: string;
+  image_url: string;
 }
 
-const Album: React.FC<AlbumDetailProps & { className?: string }> = ({ className, title, date, recording_technique, id, cover_url }) => {
+const Album: React.FC<AlbumDetailProps & { className?: string }> = ({
+   className, title, date, id, image_url
+   }) => {
 
   return (
-
     <Link className={className ? styles[className] : ''} key={id} href={`/discography/${id}`} >
-        <img src={cover_url} alt="Album cover" />
+        <img src={image_url} alt="Album cover" />
         <p>{title}</p>
         <p>{date}</p>
     </Link>

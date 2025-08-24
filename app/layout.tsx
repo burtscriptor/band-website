@@ -1,3 +1,4 @@
+
 import { DataProvider } from "./context/DataContext";
 import { supabase } from "../lib/supabase"; 
 import { getSpotifyData } from "@/lib/spotify";
@@ -8,11 +9,10 @@ import Footer from "@/components/Footer";
 
 async function fetchData() {
   try {
-    const { data: albums } = await supabase.from("albums").select("*");
-    const { data: personnel } = await supabase.from("personnel").select("*");
-    const spotify = await getSpotifyData();
-    console.log(spotify)
-    return { albums, personnel, spotify };
+  const { data: albums, error } = await supabase.from("Albums").select("*");
+  const spotify = await getSpotifyData();
+   console.log('spotify data in layout.tsx', spotify)
+    return { albums, spotify };
 
   } catch (error) {
     console.error("Supabase Error:", error);

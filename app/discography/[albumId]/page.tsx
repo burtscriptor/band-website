@@ -21,10 +21,8 @@ const page = () => {
         creative_process={result[0].creative_process}
         recorded={result[0].recorded}
         released={result[0].released}
-        recorded_at={result[0].recorded_at}
         recording_technique={result[0].recording_technique}
-        notes={result[0].notes}
-        cover_url={result[0].cover_url}
+        image_url={result[0].cover_url}
       />
     </div>
   )
