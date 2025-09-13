@@ -44,25 +44,24 @@ export default function Discography() {
   };
 
   const filterFunction = (y, c, r) => {
-    console.log('y:', typeof(y), 'c:', c, 'r:', r)
-    let albumCopy = [...albums];
-  
+   // console.log('y:', typeof (y), 'c:', c, 'r:', r)
+    let result = [...albums];
 
     if (y && y !== "Clear") {
-  albumCopy = albumCopy.filter((a) => {
-    if (a.recorded) {
-      return a.recorded.includes(y);
-    } else if (a.released) {
-      return a.released.includes(y);
+      result = result.filter((a) => {
+        if (a.recorded) {
+          return a.recorded.includes(y);
+        } else if (a.released) {
+          return a.released.includes(y);
+        }
+        return false;
+      });
     }
-    return false;
-  });
-}
-    if (c && c !== 'Clear') albumCopy = albumCopy.filter((a) => a.creative_process === c);
-    if (r && r !== 'Clear') albumCopy = albumCopy.filter((a) => a.recording_technique === r);
+    if (c && c !== 'Clear') result = result.filter((a) => a.creative_process === c);
+    if (r && r !== 'Clear') result = result.filter((a) => a.recording_technique === r);
 
-    setFilteredAlbums(albumCopy);
-    console.log('albumCopy', albumCopy)
+    setFilteredAlbums(result);
+    console.log('result', result)
   };
 
   useEffect(() => {
@@ -70,7 +69,10 @@ export default function Discography() {
     getData();
   }, []);
 
-  const discography = filteredAlbums.map((album, i) => (
+
+const discography = filteredAlbums.map((album, i) => {
+
+  return (
     <Album
       className="albumTile"
       title={album.title}
@@ -79,9 +81,11 @@ export default function Discography() {
       id={album.id}
       key={album.id}
       image_url={album.image_url}
+      spotify_album_id={album.spotify_album_id}
+      bandcamp_id={''}
       priority={i < 10}
     />
-  ));
+)});
 
   return (
     <div className={styles.discographyContainer}>

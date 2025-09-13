@@ -1,11 +1,53 @@
 .discographyContainer {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  flex: 1;
 }
-
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); 
+  grid-template-columns: repeat(4, minmax(232px, 2fr)); 
   grid-auto-rows: minmax(325px, auto);
+}
+
+.detailParentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  flex: 1;
+  margin-top: 20px;
+}
+
+
+.pretitle {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 2.5rem;
+  line-height: 1.5;
+}
+
+.detailLabel span {
+  font-weight: 500;
+}
+
+.detailLabel {
+  font-size: 18px;
+  /* margin-bottom: 10px; */
+}
+
+.detailAlbumCover {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.marginBottom {
+  margin-bottom: 10px;
+}
+
+.noPlayerMessage {
+  max-width: var(--max-width);
 }

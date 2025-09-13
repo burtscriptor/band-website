@@ -1,7 +1,6 @@
 .footerWrapper {
-    margin-top: 20px;
     display: grid;
-    grid-template-rows: 2fr 0.5fr;
+    grid-template-rows: 1.5fr 0.5fr;
     justify-content: space-evenly;
     width: 100%;
 }

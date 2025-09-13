@@ -4,6 +4,7 @@
 
 import React from 'react';
 import PlayLinks from './PlayLinks';
+import styles from '@/app/styles/Discography.module.css'
 
 interface AlbumDetailProps {
     title: string;
@@ -13,40 +14,63 @@ interface AlbumDetailProps {
     creative_process: string;
     id: number;
     image_url: string;
+    spotify_album_id: string;
+    bandcamp_id: string;
 };
 
 const AlbumDetail: React.FC<AlbumDetailProps> = ({
     id,
-    image_url,
     title,
     creative_process,
+    image_url,
     recorded,
     released,
     recording_technique,
+    spotify_album_id,
+    bandcamp_id
 }) => {
+
+    const noEmbeddedPlayer = <p className={styles.noPlayerMessage}>This is exclusive content not published on Spotify or Bandcamp, 
+    contact us on socials for listening options.</p>
+
+    const embeddedPlayer = () => {
+       return spotify_album_id !== null ?  spotifyPlayer() : bandcamp_id !== '' ? bandcampPlayer() : noEmbeddedPlayer;
+    }
+
+    const bandcampPlayer = ()=> {
+        return <iframe style="border: 0; width: 350px; height: 588px;" 
+        src="https://bandcamp.com/EmbeddedPlayer/album=1111700985/size=large/bgcol=333333/linkcol=0f91ff/transparent=true/" 
+        seamless><a href="https://wollongong.bandcamp.com/album/clown-mountain">Clown Mountain by Wollongong</a>
+        </iframe>
+    };
+
+    const spotifyPlayer = ()=> {
+        return <iframe data-testid="embed-iframe" 
+            src={`https://open.spotify.com/embed/album/${spotify_album_id}?utm_source=generator`} 
+            width="100%" height="352" frameBorder="0" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+            </iframe>
+    };
+
+    console.log('image src', image_url);
+    console.log('spotify_id:', spotify_album_id)
     return (
-        <div key={id}>
-            <img src={image_url} width={100} height={100} alt="Album cover" />
-            <p>Title: {title}</p>
-            <p>Album number: {id}</p>
-            {creative_process ? <p>Creative process: {creative_process}</p> : ""}
-            {recorded ? <p>Recorded: {recorded}</p> : ""}
-            {released ? <p>Released: {released}</p> : ""}
-            <p>Recording_technique: {recording_technique}</p>
-            <p>Tracklist: </p>
-            <PlayLinks link1={""} link2={""}/>
-            
+        <div className={styles.detailChildren}key={id}>
+            <p className={styles.pretitle}>Album: {id}</p>
+            <p className={styles.title}>{title}</p>
+            {recorded ? <p className={styles.detailLabel}><span>Recorded:</span> {recorded}</p> : ""}
+            {released ? <p className={styles.detailLabel}><span>Released:</span> {released}</p> : ""}
+            <img className={styles.detailAlbumCover} src={image_url} width={608} height={608} alt="Album cover" />
+            <p className={`${styles.detailLabel} ${styles.marginBottom}`}><span>Creative process:</span> {creative_process !== null ? creative_process : 'Lost to the sands of time.' }</p> 
+            <p className={`${styles.detailLabel} ${styles.marginBottom}` }><span>Recording environment:</span> {recording_technique !== null ? recording_technique : 'Lost to the sands of time.'}</p>
+            <p className={`${styles.detailLabel} ${styles.marginBottom}`}><span>Tracklist:</span> BYO</p>
+            <div>{embeddedPlayer()}</div>
+
+            <PlayLinks spotify_album_id={spotify_album_id} bandcamp_id={bandcamp_id} />
+
         </div>
     )
 };
 
 export default AlbumDetail;
-
-// Need links to spotify play
-
-// For displaying album information on the discography page
-// Wrap in a link tag to the direct page
-// Name, release date, image
-
-// need to make sure the types are correct because they are only stated here
-// and not in the types file?

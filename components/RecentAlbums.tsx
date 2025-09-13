@@ -10,7 +10,7 @@ interface RecentAlbumsProps {
 
 
 const RecentAlbums: React.FC<RecentAlbumsProps> = ({ albums }) => {
-    const mostRecent = albums.slice(0,3);
+    const mostRecent = albums.slice(0,4);
 
     const result =  mostRecent.map((album)=> (
       <Album className="homeTile"
@@ -29,7 +29,7 @@ const RecentAlbums: React.FC<RecentAlbumsProps> = ({ albums }) => {
 
     <div className={Styles.container}>
     <div className={Styles.title}>
-    <h2>Recent Offerings</h2>
+    <p>Recent releases</p>
     </div>
     <div className={Styles.homeContainer}>
       

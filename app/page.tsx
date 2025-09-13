@@ -55,6 +55,7 @@ export default function Home() {
       <div className={Styles.lowerContainer}>
        <SpotifyTopSongs tracks={spotifyData || []} />
        <RecentAlbums albums={albums || []} /> 
+       <div><p>Hey There Content coming soon</p></div>
        </div>
        <div className={Styles.upperContainer}></div>
     </div>

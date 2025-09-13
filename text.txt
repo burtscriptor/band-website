@@ -1,50 +1,17 @@
-// oringingal filter function based on filtering the data stored in the dataContext,
-// deployed so that we wouldn;t hvae to call supabase mulitple times
-// but have since decided to use SQL and call supabase
+Todo
 
-export function filterAlbums(albums, userFilters, setFilter){
-   
+continue working on the spotify get all album ids
+add to supabase and then use them to build the embeds
 
-    const filterFunction =( key: string, value: string, data: any[] )=>{
-        return data.filter((element) => element[key] === value);
-     };
-     
-     const loadFilters=()=>{
-         let filterData = albums;
-     
-         for(let filter of userFilters){
-             const key = Object.keys(filter)[0];
-             const value = Object.values(filter)[0];
-     
-            filterData = filterFunction(key, value, filterData) 
-         }
-     
-         return filterData
-     };
-     
-     let result = loadFilters();
-     console.log(result);
-     setFilter(false);
-     return result;
+// so we got the nextURl but it fails. on the last one because the response.json runs out
+// so perpahps we should just remove the try catch block
 
-};
+// setup a new spotif.ts file and used another function to mapp names and ids from spotify to 
+a csv file, then created a temp table and populated it with the cvs file, then used that to map 
+to albums table
+- did not have all the albums on spotify so not all the ids are available
+- also got the git hub actions working
 
- const captureFilters=(event: React.ChangeEvent<HTMLSelectElement>)=>{
-      const name = event.target.name;
-      const value = event.target.value;
-      let newFilter = { [name]: value };
-
-      setUserFilters((prev: userFilters[])=> {
-        const filterKey = Object.keys(newFilter)[0];
-        const filterExists = prev.some((f)=> Object.keys(f)[0] === filterKey);
-
-        if(filterExists) {
-            return prev.map((f)=> {
-               return Object.keys(f)[0] === filterKey ? newFilter : f;
-            });
-        } else {
-            return [...prev, newFilter];
-        }
-      });
-      
-    };
+Todo
+- restore file structure 
+- map spotify names to albums table as the spotify ones are slightly different to ours in some cases.

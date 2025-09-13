@@ -11,7 +11,8 @@ async function fetchData() {
   try {
   const { data: albums, error } = await supabase.from("Albums").select("*");
   const spotify = await getSpotifyData();
-   console.log('spotify data in layout.tsx', spotify)
+   console.log('spotify data in layout.tsx', spotify);
+   console.log('supabase data:', albums[80]);
     return { albums, spotify };
 
   } catch (error) {

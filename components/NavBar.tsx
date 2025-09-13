@@ -9,11 +9,14 @@ import SocialMediaIcons from './SocialMediaIcons';
 
 const NavBar: React.FC = () => {
   const params = usePathname();
-  let pathName = params === '/' ? '/home' : params; 
+  let pathName = params === '/' ? '/home' : params.includes('discography/') ? '/discography' : params; 
   const cleanedPathName = pathName.slice(1);
+  console.log('params', params);
+  console.log('cleanedpathName', cleanedPathName)
 
 
-  const pages = ['discography', 'home', 'multimedia'].filter(
+//  const pages = ['discography', 'home', 'multimedia'].filter(
+  const pages = ['discography'].filter(
     (page) => page !== cleanedPathName
   );
 

@@ -13,9 +13,9 @@
 }
 
 .albumTile p {
-    width: 200px;
+    width: 100%;
     text-transform: uppercase;
-    font-size: large;
+   
 }
 
 .albumTile p:last-child, .homeTile p:last-child {
@@ -24,35 +24,46 @@
     text-transform: none;
 }
 
+.imgContainer {
+    flex: 1;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
 
-/* .albumTile:hover, .homeTile:hover {
-    background: black;
-    cursor: pointer;
-    color:white;
-} */
+.date  {
+    margin-bottom: 10px;
+    font-size: x-small;
+    text-transform: none;
+    align-items: start;
+}
+
 
 .homeTile  {
    border-color: transparent;
    padding-top: 10px;
-   color:lime;
+   color:black;
 }
 
-.albumTile img, .homeTile img{
-    margin-bottom: 20px;
+.homeTile img{
     height: 200px;
 }
 
+.albumTile img {
+    height: 265px;
+}
+
 .homeTile img {
-    height: 100px;
-    border-radius: 14px;
+    height: 180px;
 }
 
 .homeTile p {
-    width: 100px;
+    width: 100%;
     text-transform: uppercase;
     font-size: small;
     text-transform: none;
     text-decoration: none;
+    padding-left: 10px;
+    padding-right:10px;
 }
 
 .noTextDecoration {
