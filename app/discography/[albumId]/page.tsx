@@ -26,7 +26,8 @@ const page = () => {
         recording_technique={result[0].recording_technique}
         image_url={result[0].image_url}
         spotify_album_id={result[0].spotify_album_id}
-        bandcamp_id={''}
+        bandcamp_id={result[0].bandcamp_id}
+        bandcamp_page_url={result[0].bandcamp_page_url}
       />
 
     </div>

@@ -82,7 +82,8 @@ const discography = filteredAlbums.map((album, i) => {
       key={album.id}
       image_url={album.image_url}
       spotify_album_id={album.spotify_album_id}
-      bandcamp_id={''}
+      bandcamp_id={album.bandcamp_id}
+      bandcamp_page_url={album.bandcamp_page_url}
       priority={i < 10}
     />
 )});

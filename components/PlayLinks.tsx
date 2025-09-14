@@ -3,11 +3,12 @@ import React from 'react';
 interface PlayLinksProps {
   spotify_album_id: string;
   bandcamp_id: string;
+  bandcamp_page_url: string;
   link1: string; 
   link2: string; 
 }
 
-const PlayLinks: React.FC<PlayLinksProps> = ({ spotify_album_id, bandcamp_id, link1, link2 }) => {
+const PlayLinks: React.FC<PlayLinksProps> = ({ spotify_album_id, bandcamp_id, bandcamp_page_url, link1, link2 }) => {
 
   const spotifyLink = `https://open.spotify.com/album/${spotify_album_id}`;
 
@@ -31,7 +32,7 @@ const PlayLinks: React.FC<PlayLinksProps> = ({ spotify_album_id, bandcamp_id, li
       }
 
       {bandcamp_id ?
-      <a href={link2} target="_blank" rel="noopener noreferrer">
+      <a href={`https://wollongong.bandcamp.com/${bandcamp_page_url}`} target="_blank" rel="noopener noreferrer">
         <p className="cursor-pointer text-blue-500 underline">
           Open on Bandcamp
         </p>

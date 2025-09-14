@@ -16,9 +16,28 @@
   align-items: center;
   justify-content: start;
   flex: 1;
-  margin-top: 20px;
+  margin-top: 80px;
 }
 
+.detailChildren {
+
+
+}
+
+.titleAndDates {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+
+}
+
+.imageAndDetails {
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  padding-left: 17px;
+  padding-right: 17px;
+
+}
 
 .pretitle {
   font-size: 14px;
@@ -28,6 +47,7 @@
 .title {
   font-size: 2.5rem;
   line-height: 1.5;
+  max-width: var(--max-width);
 }
 
 .detailLabel span {
@@ -40,7 +60,6 @@
 }
 
 .detailAlbumCover {
-  margin-top: 10px;
   margin-bottom: 10px;
 }
 

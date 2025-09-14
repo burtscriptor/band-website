@@ -3,6 +3,15 @@
     grid-template-rows: 1.5fr 0.5fr;
     justify-content: space-evenly;
     width: 100%;
+    margin-top: 65px;
+    background-color: black;
+    color: white;
+    border-top: 30px solid black;
+}
+
+.footerWrapper p {
+    font-size: 8px;
+    text-align: center;
 }
 
 .socialMediaContainer {
@@ -15,5 +24,12 @@
 .socialMedia  {
     display: flex;
     height: auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
+.colorWhite img {
+    border:2px solid white;
+    background: white;
+    border-radius: 12px;
+}

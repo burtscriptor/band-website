@@ -8,6 +8,7 @@ export interface  AlbumType {
     image_url: string;
     spotify_album_id: string;
     bandcamp_id: string;
+    bandcamp_page_url: string;
 }
 
 export interface SpotifyTrack {
