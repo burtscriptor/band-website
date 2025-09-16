@@ -8,17 +8,18 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
   margin-bottom: 20px;
   box-sizing: border-box; 
+  width: 100%;
 }
 
 
 .searchBarContainer select {
     align-self: center;
     border:1px solid black;
-    border-radius: 14px;
-    padding-right: 12px;
+    border: none;
+    font-weight: 100;
+    letter-spacing: 2px;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-right: 12px;
@@ -26,15 +27,19 @@
     background-size: 16px 16px; 
     background-position: 10px ; 
     background-repeat: no-repeat;
-    max-width: 300px;
+    color:grey;
+   
 }
 
 .searchBarContainer select:first-of-type {
     background-image: url('/clock-with-white-face.png'); 
+    width: fit-content;
+    
   }
   
   .searchBarContainer select:nth-of-type(2) {
     background-image: url('/light-bulb.png'); 
+    width: 180px;
   }
   
   .searchBarContainer select:nth-of-type(3) {
@@ -77,5 +82,7 @@
   display:flex;
   justify-content: center;
   align-items: center;
+  font-weight: 100;
+  letter-spacing: 2px;
 }
 

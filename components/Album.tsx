@@ -26,9 +26,10 @@ const Album: React.FC<AlbumDetailProps & { className?: string }> = ({
 
   return (
     <Link className={className ? styles[className] : ''} key={id} href={`/discography/${id}`} >
-  <div className={className ?  `${styles.titleAndDate}` : ''}>      
-    <p>{date}</p>
+  <div className={className ?  `${styles.titleAndDate}` : ''}>    
+    <p className={className ?  `${styles.discoDate}` : ''}>{date}</p>  
     <p className={className ?  `${styles.discoTitle}` : ''}>{title}</p>
+    
     </div>
     <div className={className ?  `${styles[className]} ${styles.imgContainer}` : ''} >
     <img src={image_url} alt={`Album cover for ${title}`}  />

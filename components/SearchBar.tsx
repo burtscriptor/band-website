@@ -52,14 +52,15 @@ function SearchBar({ filterFunction, albums, filteredAlbums }) {
                 {creativeSelector}
             </select>
             <select key="recording type" name="recording_type" value={type} id="recording_type" onChange={(e)=> setType(e.target.value)}>
-                <option value="Clear" >Recording type</option>
+                <option value="Clear" >Recording Environment</option>
                 {recordingTypeSelector}
             </select>
-
-        </div>
-        <div className={Styles.counter}>
+            <div className={Styles.counter}>
                 {filteredAlbums.length}/{albums.length}
             </div>
+
+        </div>
+        
         </div>
     )
 }
