@@ -19,6 +19,11 @@ interface AlbumDetailProps {
     bandcamp_page_url: string;
 };
 
+interface PlayLinks {
+    bandcamp_id: string;
+    bandcamp_page_url: string;
+}
+
 const AlbumDetail: React.FC<AlbumDetailProps> = ({
     id,
     title,
@@ -31,7 +36,7 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
     bandcamp_id,
     bandcamp_page_url
 }) => {
-
+console.log('ad bancamp page url:', bandcamp_page_url)
     const noEmbeddedPlayer = <p className={styles.noPlayerMessage}>This is exclusive content not published on Spotify or Bandcamp,
         contact us on socials for listening options.</p>
 
@@ -66,12 +71,14 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
             </div>
             <div className={styles.imageAndDetails}>
                 <img className={styles.detailAlbumCover} src={image_url} width={608} height={608} alt="Album cover" />
+                <div>{embeddedPlayer()}</div>
+                <PlayLinks spotify_album_id={spotify_album_id} bandcamp_id={bandcamp_id} bandcamp_page_url={bandcamp_page_url} />
                 <p className={`${styles.detailLabel} ${styles.marginBottom}`}><span>Creative process:</span> {creative_process !== null ? creative_process : 'Lost to the sands of time.'}</p>
                 <p className={`${styles.detailLabel} ${styles.marginBottom}`}><span>Recording environment:</span> {recording_technique !== null ? recording_technique : 'Lost to the sands of time.'}</p>
                 <p className={`${styles.detailLabel} ${styles.marginBottom}`}><span>Tracklist:</span> BYO</p>
-                <div>{embeddedPlayer()}</div>
+               
 
-                <PlayLinks spotify_album_id={spotify_album_id} bandcamp_id={bandcamp_id} />
+               
             </div>
         </div>
     )

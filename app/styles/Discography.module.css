@@ -73,3 +73,19 @@
 .noPlayerMessage {
   max-width: var(--max-width);
 }
+
+.openExternalLink {
+  background-color: #5bc0de;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: grab;
+  
+}
+
+.playLinkWrapper {
+  display: flex;
+  flex-direction: row;
+  gap:4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
