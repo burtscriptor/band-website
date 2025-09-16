@@ -1,14 +1,13 @@
 import React from 'react';
+import Styles from '@/app/styles/Discography.module.css';
 
 interface PlayLinksProps {
   spotify_album_id: string;
   bandcamp_id: string;
   bandcamp_page_url: string;
-  link1: string; 
-  link2: string; 
 }
 
-const PlayLinks: React.FC<PlayLinksProps> = ({ spotify_album_id, bandcamp_id, bandcamp_page_url, link1, link2 }) => {
+const PlayLinks: React.FC<PlayLinksProps> = ({ spotify_album_id, bandcamp_id, bandcamp_page_url }) => {
 
   const spotifyLink = `https://open.spotify.com/album/${spotify_album_id}`;
 
@@ -23,9 +22,9 @@ const PlayLinks: React.FC<PlayLinksProps> = ({ spotify_album_id, bandcamp_id, ba
   };
 
   return (
-    <div>
+    <div className={Styles.playLinkWrapper}>
         {spotify_album_id ? 
-      <p onClick={openApp} className="cursor-pointer text-blue-500 underline">
+      <p onClick={openApp} className={Styles.openExternalLink}>
         Open in Spotify
       </p>
       : ''
@@ -33,7 +32,7 @@ const PlayLinks: React.FC<PlayLinksProps> = ({ spotify_album_id, bandcamp_id, ba
 
       {bandcamp_id ?
       <a href={`https://wollongong.bandcamp.com/${bandcamp_page_url}`} target="_blank" rel="noopener noreferrer">
-        <p className="cursor-pointer text-blue-500 underline">
+        <p className={Styles.openExternalLink}>
           Open on Bandcamp
         </p>
       </a>
