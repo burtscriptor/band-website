@@ -14,23 +14,6 @@
 }
 
 
-.searchBarContainer select {
-    align-self: center;
-   
-    border: none;
-    font-weight: 100;
-    letter-spacing: 2px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-right: 12px;
-    padding-left: 35px;
-    background-size: 16px 16px; 
-    background-position: 10px ; 
-    background-repeat: no-repeat;
-   
-   
-}
-
 .counter {
   display:flex;
   justify-content: center;
@@ -72,11 +55,10 @@
   top: 100%;
   left: 0;
   width: 100%;
-  max-width: 210px;
   max-height: fit-content;
   overflow-y: auto;
   margin-top: 2px;
-  background-color: white;
+  background-color: black;
   border: 0.5px solid #ccc;
   border-radius: 6px;
   z-index: 10;
@@ -88,20 +70,27 @@
   padding: 5px 10px;
   font-weight: 100;
   letter-spacing: 2px;
+  color: white;
 }
 
 .customSelectOption:hover,
 .selected {
-  background-color: #e0e0e0;
+  background-color: purple;
 }
 
-/* Optional: add icons like original selects */
 .yearDropdown .customSelectBox {
   background-image: url('/clock-with-white-face.png');
+
 }
 
 .processDropdown .customSelectBox {
   background-image: url('/light-bulb.png');
+
+}
+
+.creativeProcessDropDown {
+  width: 400px;
+
 }
 
 .typeDropdown .customSelectBox {

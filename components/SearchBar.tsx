@@ -46,12 +46,12 @@ function SearchBar({ filterFunction, albums, filteredAlbums }) {
   className={`${Styles.customSelectWrapper} ${Styles.yearDropdown}`}
   onClick={() => setOpenYear(!openYear)}
 >
-  <div className={Styles.customSelectBox}>
+  <div className={`${Styles.customSelectBox}`}>
     {year === 'Clear' ? 'Year' : year}
     <span className={Styles.arrow}>{openYear ? '▲' : '▼'}</span>
   </div>
   {openYear && (
-    <ul className={Styles.customSelectDropdown}>
+    <ul className={`${Styles.customSelectDropdown} ${Styles.yearDropdownWidth}`}>
       <li
         className={Styles.customSelectOption}
         onClick={() => { setYear('Clear'); setOpenYear(false); }}
@@ -81,7 +81,7 @@ function SearchBar({ filterFunction, albums, filteredAlbums }) {
     <span className={Styles.arrow}>{openProcess ? '▲' : '▼'}</span>
   </div>
   {openProcess && (
-    <ul className={Styles.customSelectDropdown}>
+    <ul className={`${Styles.customSelectDropdown} ${Styles.creativeProcessDropDown}`}>
       <li
         className={Styles.customSelectOption}
         onClick={() => { setProcess('Clear'); setOpenProcess(false); }}
