@@ -9,7 +9,7 @@ import Footer from "@/components/Footer";
 
 async function fetchData() {
   try {
-  const { data: albums, error } = await supabase.from("Albums").select("*");
+  const { data: albums, error } = await supabase.from("Albums").select("*").order('id', { ascending: true });;
   const spotify = await getSpotifyData();
    console.log('spotify data in layout.tsx', spotify);
    console.log('supabase data:', albums[80]);

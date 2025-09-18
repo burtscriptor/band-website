@@ -44,7 +44,7 @@ export default function Discography() {
   };
 
   const filterFunction = (y, c, r) => {
-   // console.log('y:', typeof (y), 'c:', c, 'r:', r)
+ 
     let result = [...albums];
 
     if (y && y !== "Clear") {

@@ -31,7 +31,7 @@ const NavBar: React.FC = () => {
     <div className={Styles.navContainer}>
 
       <div className={Styles.titleContainer}>
-        <Link className={Styles.title} href="/">WOLLONGONG</Link>
+        <Link className={Styles.title} href="/discography">WOLLONGONG</Link>
         <p>The</p>
         <p>Band</p>
       </div>

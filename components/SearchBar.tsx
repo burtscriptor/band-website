@@ -1,68 +1,144 @@
+
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useData, generateCreativeProcess } from '@/app/context/DataContext';
-import Styles from '../app/styles/SearchBar.module.css'
-
-type UserFilters = {
-    year: string;
-    creative_process: string;
-    recorded_at: string;
-    recording_type: string;
-};
-
+import Styles from '../app/styles/SearchBar.module.css';
 
 function SearchBar({ filterFunction, albums, filteredAlbums }) {
-    const [ year, setYear] = useState('');
-    const  [ process, setProcess] = useState('');
-    const [ type, setType] = useState('');
-    // Variables
-    const creativeProcess = generateCreativeProcess();
-    const years = Array.from({ length: 2030 - 2012 + 1 }, (_, index) => 2012 + index);
-    const recordingType = [ "Studio", "Live"];
-    
+  const [year, setYear] = useState('Clear');
+  const [process, setProcess] = useState('Clear');
+  const [type, setType] = useState('Clear');
 
-    // Dropdown selectors
-    const yearSelector = years.map((year, index) => <option key={index} value={year}>{year}</option>);
-    const creativeSelector = creativeProcess.map((process: string, index: number) => <option key={index} value={process}>{process}</option>);
-    const recordingTypeSelector = recordingType.map((type, index: number)=> <option key={index} value={type}>{type}</option>);
-    
-    
+  const creativeProcess = generateCreativeProcess();
+  const years = Array.from({ length: 2030 - 2012 + 1 }, (_, i) => 2012 + i);
+  const recordingType = ['Studio', 'Live'];
 
-    useEffect(() => {
-      filterFunction(year, process, type);
-    }, [year, process, type]);
+  const [openYear, setOpenYear] = useState(false);
+  const [openProcess, setOpenProcess] = useState(false);
+  const [openType, setOpenType] = useState(false);
 
-   
-    //   const { name, value } = event.target;
-      
-    //   setUserFilters((prev)=> ({...prev, [name]: value}));
-    // };
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    filterFunction(year, process, type);
+  }, [year, process, type]);
+
+  // Close dropdowns on outside click
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+        setOpenYear(false);
+        setOpenProcess(false);
+        setOpenType(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <div className={Styles.searhBarWrapper} ref={wrapperRef}>
+      <div className={Styles.searchBarContainer}>
+
+      {/* Year Dropdown */}
+<div
+  className={`${Styles.customSelectWrapper} ${Styles.yearDropdown}`}
+  onClick={() => setOpenYear(!openYear)}
+>
+  <div className={`${Styles.customSelectBox}`}>
+    {year === 'Clear' ? 'Year' : year}
+    <span className={Styles.arrow}>{openYear ? '▲' : '▼'}</span>
+  </div>
+  {openYear && (
+    <ul className={`${Styles.customSelectDropdown} ${Styles.yearDropdownWidth}`}>
+      <li
+        className={Styles.customSelectOption}
+        onClick={() => { setYear('Clear'); setOpenYear(false); }}
+      >
+        Clear
+      </li>
+      {years.map((y) => (
+        <li
+          key={y}
+          className={`${Styles.customSelectOption} ${y.toString() === year ? Styles.selected : ''}`}
+          onClick={() => { setYear(y.toString()); setOpenYear(false); }}
+        >
+          {y}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+
+{/* Creative Process Dropdown */}
+<div
+  className={`${Styles.customSelectWrapper} ${Styles.processDropdown}`}
+  onClick={() => setOpenProcess(!openProcess)}
+>
+  <div className={Styles.customSelectBox}>
+    {process === 'Clear' ? 'Creative Process' : process}
+    <span className={Styles.arrow}>{openProcess ? '▲' : '▼'}</span>
+  </div>
+  {openProcess && (
+    <ul className={`${Styles.customSelectDropdown} ${Styles.creativeProcessDropDown}`}>
+      <li
+        className={Styles.customSelectOption}
+        onClick={() => { setProcess('Clear'); setOpenProcess(false); }}
+      >
+        Clear
+      </li>
+      {creativeProcess.map((p) => (
+        <li
+          key={p}
+          className={`${Styles.customSelectOption} ${p === process ? Styles.selected : ''}`}
+          onClick={() => { setProcess(p); setOpenProcess(false); }}
+        >
+          {p}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+
+{/* Recording Type Dropdown */}
+<div
+  className={`${Styles.customSelectWrapper} ${Styles.typeDropdown}`}
+  onClick={() => setOpenType(!openType)}
+>
+  <div className={Styles.customSelectBox}>
+    {type === 'Clear' ? 'Recording Environment' : type}
+    <span className={Styles.arrow}>{openType ? '▲' : '▼'}</span>
+  </div>
+  {openType && (
+    <ul className={Styles.customSelectDropdown}>
+      <li
+        className={Styles.customSelectOption}
+        onClick={() => { setType('Clear'); setOpenType(false); }}
+      >
+        Clear
+      </li>
+      {recordingType.map((t) => (
+        <li
+          key={t}
+          className={`${Styles.customSelectOption} ${t === type ? Styles.selected : ''}`}
+          onClick={() => { setType(t); setOpenType(false); }}
+        >
+          {t}
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
 
 
-    return (
-        <div className={Styles.searhBarWrapper}>
-        <div className={Styles.searchBarContainer}>
-            <select key="year" name="year" value={year} id="year" onChange={(e) => setYear(e.target.value)}>
-                <option value="Clear" >Year</option>
-                {yearSelector}
-            </select>
-            <select key="creative process" name="creative_process" value={process} id="creative_process" onChange={(e)=> setProcess(e.target.value)}>
-                <option value="Clear" >Creative process</option>
-                {creativeSelector}
-            </select>
-            <select key="recording type" name="recording_type" value={type} id="recording_type" onChange={(e)=> setType(e.target.value)}>
-                <option value="Clear" >Recording Environment</option>
-                {recordingTypeSelector}
-            </select>
-            <div className={Styles.counter}>
-                {filteredAlbums.length}/{albums.length}
-            </div>
-
+        {/* Counter */}
+        <div className={Styles.counter}>
+          {filteredAlbums.length}/{albums.length}
         </div>
-        
-        </div>
-    )
+      </div>
+    </div>
+  );
 }
 
 export default SearchBar;
