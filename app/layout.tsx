@@ -27,6 +27,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
+        <title>Wollongong Discography</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
