@@ -28,7 +28,6 @@ export function DataProvider({ children, initialData }: { children: React.ReactN
   const [albums, setAlbums] = useState<any[]>(initialData.albums);
   const [spotifyData, setSpotifyData] = useState<any>(initialData.spotify);
 
-  // ✅ add the missing states
   const [filter, setFilter] = useState<boolean>(false);
   const [userFilters, setUserFilters] = useState<UserFilters>({
     year: "",
