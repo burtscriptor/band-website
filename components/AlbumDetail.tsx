@@ -36,14 +36,14 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
     bandcamp_id,
     bandcamp_page_url
 }) => {
-console.log('ad bancamp page url:', bandcamp_page_url)
+
     const noEmbeddedPlayer = <p className={styles.noPlayerMessage}>This is exclusive content not published on Spotify or Bandcamp,
         contact us on socials for listening options.</p>
 
     const embeddedPlayer = () => {
         return spotify_album_id !== null ? spotifyPlayer() : bandcamp_id !== '' ? bandcampPlayer() : noEmbeddedPlayer;
     }
-    //style="border: 0; width: 350px; height: 588px;"
+
     const bandcampPlayer = () => {
         return <iframe
             src={`https://bandcamp.com/EmbeddedPlayer/album=${bandcamp_id}/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=true/artwork=small/transparent=true/`}
@@ -55,12 +55,9 @@ console.log('ad bancamp page url:', bandcamp_page_url)
     };
 
     const spotifyPlayer = () => {
-        return <iframe data-testid="embed-iframe"  src={`https://open.spotify.com/embed/album/${spotify_album_id}?utm_source=generator`} width="100%" height="352" frameBorder="0"  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        return <iframe data-testid="embed-iframe" src={`https://open.spotify.com/embed/album/${spotify_album_id}?utm_source=generator`} width="100%" height="352" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     };
 
-    console.log('image src', image_url);
-    console.log('spotify_id:', spotify_album_id)
-    console.log('player:', embeddedPlayer())
     return (
         <div className={styles.detailChildren} key={id}>
             <div className={styles.titleAndDates}>
@@ -76,9 +73,6 @@ console.log('ad bancamp page url:', bandcamp_page_url)
                 <p className={`${styles.detailLabel} ${styles.marginBottom}`}><span>Creative process:</span> {creative_process !== null ? creative_process : 'Lost to the sands of time.'}</p>
                 <p className={`${styles.detailLabel} ${styles.marginBottom}`}><span>Recording environment:</span> {recording_technique !== null ? recording_technique : 'Lost to the sands of time.'}</p>
                 <p className={`${styles.detailLabel} ${styles.marginBottom}`}><span>Tracklist:</span> BYO</p>
-               
-
-               
             </div>
         </div>
     )
