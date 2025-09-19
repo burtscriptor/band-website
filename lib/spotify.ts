@@ -13,7 +13,6 @@ export const getSpotifyData = async(): Promise<FilteredTrack[] | null> => {
     if(!token) return null;
 
     try {
-      console.log(All_ALBUMS)
         const response = await fetch(ARTIST_ID, {
             method: "GET",
             headers: {
@@ -28,7 +27,6 @@ export const getSpotifyData = async(): Promise<FilteredTrack[] | null> => {
         }
 
         const data = await response.json();
-        console.log('spotify respone data all albums id',data)
         return filterSpotifyData(data?.tracks ?? []);
 
     } catch (error) {

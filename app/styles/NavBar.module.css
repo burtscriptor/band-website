@@ -1,15 +1,15 @@
 .navContainer {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    gap:15px;
+    gap: 15px;
     flex-direction: row;
-    color:black;
-    width: 100%;  
-   
+    color: black;
+    width: 100%;
+
 }
 
 .navContainer a {
- text-decoration: none;
+    text-decoration: none;
 }
 
 .titleContainer {
@@ -27,14 +27,19 @@
 
 .titleContainer p {
     font-size: 12px;
-   
 }
 
 .currentPage {
-   text-align: right;
+    text-align: right;
     font-size: x-large;
     font-weight: 100;
     letter-spacing: 4px;
+}
+
+.currentPage:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 8px;
 }
 
 .navLinks {
@@ -47,7 +52,7 @@
 .linkContainer {
     border: 0.5px soild #00ff1e;
     width: 200px;
-    height:fit-content;
+    height: fit-content;
     display: flex;
     justify-content: center;
 }

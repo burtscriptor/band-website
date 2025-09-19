@@ -17,15 +17,6 @@ body {
   flex-direction: column;
 }
 
-body {
-   /* background: linear-gradient(360deg, #ff7e5f, #feb47b, #86a8e7, #91eae4);
-  color: var(--foreground);
-  /* background: var(--background); */
-  /* font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; */ 
-}
-
 * {
   box-sizing: border-box;
   padding: 0;
@@ -38,4 +29,10 @@ a,
 a:visited {
   color: black; /* or whatever your normal link color is */
   text-decoration: none; /* optional */
+}
+
+.ultra-regular {
+  font-family: "Ultra", serif;
+  font-weight: 400;
+  font-style: normal;
 }

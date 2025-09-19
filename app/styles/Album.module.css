@@ -1,36 +1,41 @@
-.albumTile, .homeTile {
+.albumTile {
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color:black;
+    color: black;
     text-decoration: none;
     font-weight: 400;
+    padding-top: 20px;
 }
 
-.albumTile {
-     padding-top: 20px; 
+.firstRow {
+    /* padding-top: 0px; */
 }
 
 .albumTile p {
     width: 100%;
-    text-transform: uppercase;
 }
-
 
 .imgContainer {
     flex: 1;
     justify-content: flex-end;
-    /* margin-top: 15px; */
 }
 
 .discoTitle {
-   font-size: large;
-   text-align: left;
-   letter-spacing: 2px;
-   font-weight: 500;
-   word-break: break-word; 
-  overflow-wrap: break-word;
+    font-size: 20px;
+    text-align: left;
+    letter-spacing: 4px;
+    font-weight: 400;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    font-family: "Fjalla One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.discoTitle:hover {
+    text-decoration: underline;
 }
 
 .discoDate {
@@ -52,13 +57,13 @@
     text-align: left;
 }
 
-.homeTile  {
-   border-color: transparent;
-   padding-top: 10px;
-   color:black;
+.homeTile {
+    border-color: transparent;
+    padding-top: 10px;
+    color: black;
 }
 
-.homeTile img{
+.homeTile img {
     height: 200px;
 }
 
@@ -77,9 +82,10 @@
     text-transform: none;
     text-decoration: none;
     padding-left: 10px;
-    padding-right:10px;
+    padding-right: 10px;
 }
 
 .noTextDecoration {
     text-decoration: none;
 }
+

@@ -33,3 +33,15 @@ export interface SpotifyResponse {
     tracks: SpotifyTrack[];
 }
 
+export interface SearchBarProps {
+  filterFunction: (searchTerm: string) => void;
+  albums: AlbumType[];          // Replace AlbumType with your album type
+  filteredAlbums: AlbumType[];
+  setReverse: (value: boolean) => void;
+  reverse: boolean;
+}
+
+export interface DataContextType {
+  albums: AlbumType[];
+  spotifyData: SpotifyTrack[];
+}

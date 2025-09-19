@@ -11,24 +11,32 @@ export default function Discography() {
   const [albums, setAlbums] = useState([]);
   const [filteredAlbums, setFilteredAlbums] = useState([]);
   const [filter, setFilter] = useState();
+  const [reverse, setReverse] = useState(false);
 
   const getData = () => {
+
     const storedData = localStorage.getItem('data');
 
     if (storedData) {
-      const parsed = JSON.parse(storedData);
 
-      const isStale = Date.now() - parsed.timeStamp > 1000 * 60 * 60; // 1 hour
+      const parsed = JSON.parse(storedData);
+      const ONE_HOUR = 1000 * 60 * 60;
+      const isStale = Date.now() - parsed.timeStamp > ONE_HOUR; 
+
       if (!isStale) {
+
         setAlbums(parsed.albums);
         setFilteredAlbums(parsed.albums);
-        console.log('not stale', parsed.timeStamp);
+
       } else {
+
         setAlbums(dataContext.albums || []);
         setFilteredAlbums(dataContext.albums || []);
-        console.log('stale', parsed.timeStamp);
+        localStorage.removeItem('data');
+
       }
     } else if (dataContext) {
+
       setAlbums(dataContext.albums || []);
       setFilteredAlbums(dataContext.albums || []);
       setFilter(dataContext.filter || null);
@@ -40,11 +48,12 @@ export default function Discography() {
           timeStamp: Date.now(),
         })
       );
+
     }
   };
 
   const filterFunction = (y, c, r) => {
- 
+   
     let result = [...albums];
 
     if (y && y !== "Clear") {
@@ -60,12 +69,11 @@ export default function Discography() {
     if (c && c !== 'Clear') result = result.filter((a) => a.creative_process === c);
     if (r && r !== 'Clear') result = result.filter((a) => a.recording_technique === r);
 
-    setFilteredAlbums(result);
-    console.log('result', result)
+    setFilteredAlbums( result );
+
   };
 
   useEffect(() => {
-    console.log('useEffct on disco page.tsx')
     getData();
   }, []);
 
@@ -74,12 +82,13 @@ const discography = filteredAlbums.map((album, i) => {
 
   return (
     <Album
+      key={album.id}
+      index={i}
       className="albumTile"
       title={album.title}
       date={album.released ? album.released : album.recorded}
       recording_technique={album.recording_technique}
       id={album.id}
-      key={album.id}
       image_url={album.image_url}
       spotify_album_id={album.spotify_album_id}
       bandcamp_id={album.bandcamp_id}
@@ -90,8 +99,8 @@ const discography = filteredAlbums.map((album, i) => {
 
   return (
     <div className={styles.discographyContainer}>
-      <SearchBar filterFunction={filterFunction} albums={albums} filteredAlbums={filteredAlbums} />
-      <div className={styles.grid}>{discography}</div>
+      <SearchBar filterFunction={filterFunction} albums={albums} filteredAlbums={filteredAlbums} setReverse={setReverse} reverse={reverse}/>
+      <div className={styles.grid}>{!reverse ? discography.reverse() : discography }</div>
     </div>
   );
 }
