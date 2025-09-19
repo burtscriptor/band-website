@@ -1,11 +1,11 @@
 import React from 'react';
-import { FilteredTrack } from "@/types/types";
+import { SpotifyTrack } from "@/types/types";
 import SpotifySong from './SpotifySong';
 import styles from '../app/styles/Home.module.css'
 
 
 type SpotifyTopSongsProps = {
-  tracks: FilteredTrack[];
+  tracks: SpotifyTrack[];
 };
 
 const SpotifyTopSongs: React.FC<SpotifyTopSongsProps> = ({ tracks }) => {
@@ -16,8 +16,8 @@ const SpotifyTopSongs: React.FC<SpotifyTopSongsProps> = ({ tracks }) => {
     key={i}
     name={song.name}
     album={song.album}
-    image={song.image}
-    url={song.url}
+    image={song?.image_url}
+    url=""
     />
   ))
 

@@ -7,7 +7,7 @@ interface SpotifySongProps {
     name: string;
     image: string;
     url: string;
-    album: string;
+    album: object;
 }
 
 const SpotifySong: React.FC<SpotifySongProps> = ({ className, name, image, url, album }) => {
@@ -18,7 +18,7 @@ const SpotifySong: React.FC<SpotifySongProps> = ({ className, name, image, url, 
           
                 <img src={image} alt="Album Cover" />
                 <p>{name}</p>
-                <p>From {album}</p>
+                <p>From {}</p>
            
         </div>
         </a>
