@@ -1,10 +1,17 @@
 .homeContainer {
     display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 200px)); 
+    grid-template-columns: repeat(2, minmax(200px, 200px)); 
+    height: fit-content;
 }   
 
-.title h2 {
-    padding-left:48px;
-    color:#1E40AF;
+.title p {
+    text-align: center;
+    padding-left:0;
+    color:black;
     background-color: white;
+}
+
+.containerLeft {
+    position: relative;
+    top:-100px;
 }

@@ -3,33 +3,40 @@
 import React from 'react';
 import Link from 'next/link';
 import styles from '../app/styles/Album.module.css';
+import { usePathname } from 'next/navigation';
+
 interface AlbumDetailProps {
+  index: number;
   title: string;
   date: string;
   recording_technique: string;
   id: number;
-  cover_url: string;
+  image_url: string;
+  spotify_id: string;
+  bandcamp_id: string;
+  bandcamp_page_url: string;
+  className:  string;
 }
 
-const Album: React.FC<AlbumDetailProps & { className?: string }> = ({ className, title, date, recording_technique, id, cover_url }) => {
+const Album: React.FC<AlbumDetailProps & { className?: string }> = ({
+  index, className, title, date, id, image_url
+}) => {
+  const params = usePathname();
+  const discographyPage = params.includes('discography') ? true : false;
 
   return (
+    <Link className={`${styles[className]} ${index <= 3 ? styles.firstRow : ""}`} key={id} href={`/discography/${id}`} >
+      <div className={className ? `${styles.titleAndDate}` : ''}>
+        <p className={className ? `${styles.discoDate}` : ''}>{date}</p>
+        <p className={className ? `${styles.discoTitle}` : ''}>{title}</p>
 
-    <Link className={className ? styles[className] : ''} key={id} href={`/discography/${id}`} >
-        <img src={cover_url} alt="Album cover" />
-        <p>{title}</p>
-        <p>{date}</p>
+      </div>
+      <div className={className ? `${styles[className]} ${styles.imgContainer}` : ''} >
+        <img src={image_url} alt={`Album cover for ${title}`} />
+      </div>
+
     </Link>
   )
 };
 
 export default Album;
-
-
-
-// For displaying album information on the discography page
-// Wrap in a link tag to the direct page
-// Name, release date, image
-
-// need to make sure the types are correct because they are only stated here
-// and not in the types file?

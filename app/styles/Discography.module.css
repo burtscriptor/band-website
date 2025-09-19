@@ -1,13 +1,91 @@
-.discographyContainer {
-  margin-left: 15px;
-}
 
-.discographyContainer h1 {
- margin-bottom: 10px;
+.discographyContainer {
+  margin-left: 40px;
+  margin-right: 40px;
+  flex: 1;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr)); 
-  grid-auto-rows: minmax(375px, auto);
+  grid-template-columns: repeat(4, minmax(232px, 2fr)); 
+  grid-auto-rows: minmax(325px, auto);
+  row-gap: 1px; 
+  column-gap: 1px;
+  background: #ccc; 
+}
+
+.grid > * {
+  background: white; 
+  padding-bottom: 40px;
+}
+
+.detailParentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  flex: 1;
+}
+
+.titleAndDates {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 10px;
+}
+
+.imageAndDetails {
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  padding-left: 17px;
+  padding-right: 17px;
+}
+
+.pretitle {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.title {
+  font-size: 30px;
+  line-height: 1.5;
+  max-width: var(--max-width);
+  font-family: "Fjalla One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.detailLabel span {
+  font-weight: 500;
+}
+
+.detailLabel {
+  font-size: 18px;
+}
+
+.detailAlbumCover {
+  margin-bottom: 10px;
+}
+
+.marginBottom {
+  margin-bottom: 10px;
+}
+
+.noPlayerMessage {
+  max-width: var(--max-width);
+}
+
+.openExternalLink {
+  background-color: #5bc0de;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: grab;
+  
+}
+
+.playLinkWrapper {
+  display: flex;
+  flex-direction: row;
+  gap:4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

@@ -10,8 +10,10 @@ type SpotifyTopSongsProps = {
 
 const SpotifyTopSongs: React.FC<SpotifyTopSongsProps> = ({ tracks }) => {
   console.log(tracks);
-  const topFive = tracks.slice(0,3).map((song, index)=> (
-    <SpotifySong className="homeTile"  
+  const topFive = tracks.slice(0,4).map((song, i)=> (
+    <SpotifySong 
+    className="homeTile"  
+    key={i}
     name={song.name}
     album={song.album}
     image={song.image}
@@ -22,9 +24,9 @@ const SpotifyTopSongs: React.FC<SpotifyTopSongsProps> = ({ tracks }) => {
 
   return (
     <>
-    <div className={styles.container}>
+    <div className={styles.containerLeft}>
       <div className={styles.title}>
-        <h2>Trending on Spotify</h2>
+        <p>Spotify favourites</p>
       </div>
      <div className={styles.homeContainer}>
       {topFive}

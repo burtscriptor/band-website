@@ -4,6 +4,7 @@ import qs from "qs";
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 const ARTIST_ID = process.env.SPOTIFY_ARTIST_ID;
+const All_ALBUMS = process.env.SPOTIFY_ALL_ALBUMS;
 const TOKEN_ENDPOINT = process.env.SPOTIFY_TOKEN_ENDPOINT;
 
 export const getSpotifyData = async(): Promise<FilteredTrack[] | null> => {
@@ -16,7 +17,7 @@ export const getSpotifyData = async(): Promise<FilteredTrack[] | null> => {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/x-www-form-urlencoded"
+                 "Content-Type": "application/x-www-form-urlencoded"
             },
             next: { revalidate: 3600 }
         });
@@ -60,6 +61,7 @@ const filterSpotifyData = (spotify_data: SpotifyTrack[]): FilteredTrack[] => {
         album: element.album.name,
         image: element.album.images?.[1]?.url || element.album.images?.[0]?.url || "", 
         url: element.external_urls.spotify,
+        id: element.album.id,
     }));
 };
 

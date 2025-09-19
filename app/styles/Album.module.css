@@ -3,59 +3,89 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color:black;
+    color: black;
     text-decoration: none;
     font-weight: 400;
+    padding-top: 20px;
 }
 
-.albumTile {
-    padding-top: 40px;
+.firstRow {
+    /* padding-top: 0px; */
 }
 
 .albumTile p {
-    width: 200px;
-    text-transform: uppercase;
-    font-size: large;
+    width: 100%;
 }
 
-.albumTile p:last-child, .homeTile p:last-child {
-    margin-top: 2px;
+.imgContainer {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.discoTitle {
+    font-size: 20px;
+    text-align: left;
+    letter-spacing: 4px;
+    font-weight: 400;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    font-family: "Fjalla One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.discoTitle:hover {
+    text-decoration: underline;
+}
+
+.discoDate {
+    color: #579a18;
+    font-size: smaller;
+    text-align: left;
+    padding-bottom: 8px;
+}
+
+.date {
+    margin-bottom: 10px;
     font-size: x-small;
     text-transform: none;
+    align-items: start;
 }
 
-
-.albumTile:hover, .homeTile:hover {
-    background: black;
-    cursor: pointer;
-    color:white;
+.titleAndDate {
+    width: 265px;
+    text-align: left;
 }
 
-.homeTile  {
-   border-color: transparent;
-   /* margin-bottom: 60px; */
-   padding-top: 10px;
-   color:lime;
-}
-
-.albumTile img, .homeTile img{
-    margin-bottom: 20px;
-    height: 200px;
+.homeTile {
+    border-color: transparent;
+    padding-top: 10px;
+    color: black;
 }
 
 .homeTile img {
-    height: 100px;
-    border-radius: 14px;
+    height: 200px;
+}
+
+.albumTile img {
+    height: 265px;
+}
+
+.homeTile img {
+    height: 180px;
 }
 
 .homeTile p {
-    width: 100px;
+    width: 100%;
     text-transform: uppercase;
     font-size: small;
     text-transform: none;
     text-decoration: none;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .noTextDecoration {
     text-decoration: none;
 }
+
