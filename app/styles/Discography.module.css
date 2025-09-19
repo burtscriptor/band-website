@@ -1,6 +1,7 @@
+
 .discographyContainer {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 40px;
+  margin-right: 40px;
   flex: 1;
 }
 
@@ -8,13 +9,13 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(232px, 2fr)); 
   grid-auto-rows: minmax(325px, auto);
-  row-gap: 1px; /* gap between rows */
+  row-gap: 1px; 
   column-gap: 1px;
-  background: #ccc; /* row gap color */
+  background: #ccc; 
 }
 
 .grid > * {
-  background: white; /* item background so gaps show up */
+  background: white; 
   padding-bottom: 40px;
 }
 
@@ -24,14 +25,12 @@
   align-items: center;
   justify-content: start;
   flex: 1;
-  /* margin-top: 80px; */
 }
 
 .titleAndDates {
   padding-left: 20px;
   padding-right: 20px;
   margin-bottom: 10px;
-
 }
 
 .imageAndDetails {
@@ -39,7 +38,6 @@
   border-right: 1px solid grey;
   padding-left: 17px;
   padding-right: 17px;
-
 }
 
 .pretitle {
@@ -48,9 +46,12 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 30px;
   line-height: 1.5;
   max-width: var(--max-width);
+  font-family: "Fjalla One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .detailLabel span {
@@ -59,7 +60,6 @@
 
 .detailLabel {
   font-size: 18px;
-  /* margin-bottom: 10px; */
 }
 
 .detailAlbumCover {
