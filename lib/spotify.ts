@@ -8,6 +8,7 @@ const All_ALBUMS = process.env.SPOTIFY_ALL_ALBUMS;
 const TOKEN_ENDPOINT = process.env.SPOTIFY_TOKEN_ENDPOINT;
 
 export const getSpotifyData = async (): Promise<FilteredTrack[] | null> => {
+    
     const token = await fetchToken();
 
     if (!token) return null;

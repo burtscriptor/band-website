@@ -41,3 +41,12 @@ export interface DataContextType {
   albums: AlbumType[];
   spotifyData: SpotifyTrack[];
 }
+
+export interface FilteredTrack {
+  name: string;
+  album: string;
+  image: string;
+  url: string;
+  id: string;
+
+}
