@@ -15,6 +15,7 @@ export interface SpotifyTrack {
     image_url: string;
     name: string;
     album: {
+        id: string;
         name: string;
         images: { url: string }[];
     };
@@ -23,12 +24,6 @@ export interface SpotifyTrack {
     };
 }
 
-export interface FilteredTrack {
-    // name: string;
-    // album: string;
-    // image_url: string;
-    // url: string;
-}
 
 export interface SpotifyResponse {
     tracks: SpotifyTrack[];
