@@ -35,8 +35,8 @@ export interface SpotifyResponse {
 }
 
 export interface SearchBarProps {
-  filterFunction: (searchTerm: string) => void;
-  albums: AlbumType[];          // Replace AlbumType with your album type
+  filterFunction: ( year: string, process: string, type: string ) => void;
+  albums: AlbumType[];          
   filteredAlbums: AlbumType[];
   setReverse: (value: boolean) => void;
   reverse: boolean;
