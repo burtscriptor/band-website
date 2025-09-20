@@ -2,8 +2,6 @@
 
 import { useData } from "./context/DataContext";
 import Styles from "./page.module.css";
-import RecentAlbums from "@/components/RecentAlbums";
-import SpotifyTopSongs from "@/components/SpotifyTopSongs";
 import { AlbumType, SpotifyTrack } from "@/types/types";
 import { useEffect, useState } from "react";
 
@@ -48,11 +46,7 @@ export default function Home() {
   return (
     <div className={Styles.pageContainer}>
       <div className={Styles.lowerContainer}>
-        <SpotifyTopSongs tracks={spotifyData} />
-        <RecentAlbums albums={albums} />
-        <div>
-          <p>Hey There Content coming soon</p>
-        </div>
+    
       </div>
       <div className={Styles.upperContainer}></div>
     </div>
