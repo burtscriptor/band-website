@@ -8,7 +8,7 @@ import styles from '@/app/styles/Discography.module.css'
 
 const page = () => {
   const { albums } = useData();
-  const params = useParams();
+  const params = useParams<{ albumId: string }>();
   const id = parseInt(params.albumId, 10); // how will this handle 101 etc?
   
   const result = albums.filter((album)=> album.id === id);

@@ -3,9 +3,9 @@ import qs from "qs";
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
-const ARTIST_ID = process.env.SPOTIFY_ARTIST_ID;
+const ARTIST_ID = process.env.SPOTIFY_ARTIST_ID!;
 const All_ALBUMS = process.env.SPOTIFY_ALL_ALBUMS;
-const TOKEN_ENDPOINT = process.env.SPOTIFY_TOKEN_ENDPOINT;
+const TOKEN_ENDPOINT = process.env.SPOTIFY_TOKEN_ENDPOINT!;
 
 export const getSpotifyData = async(): Promise<FilteredTrack[] | null> => {
     const token = await fetchToken();
@@ -29,8 +29,9 @@ export const getSpotifyData = async(): Promise<FilteredTrack[] | null> => {
         const data = await response.json();
         return filterSpotifyData(data?.tracks ?? []);
 
-    } catch (error) {
+    } catch (error: any) {
         console.error("Error fetching artist data:", error.response?.data || error.message);
+        return null;
     }
 };
 
@@ -49,7 +50,7 @@ const fetchToken = async () => {
         if (!response.ok) throw new Error("Failed to fetch token");
             const result = await response.json();
             return result.access_token;
-     } catch (error) {
+     } catch (error: any) {
         console.error("Error fetching token:", error.message);
     }
 };

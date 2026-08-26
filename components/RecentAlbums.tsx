@@ -12,8 +12,9 @@ interface RecentAlbumsProps {
 const RecentAlbums: React.FC<RecentAlbumsProps> = ({ albums }) => {
     const mostRecent = albums.slice(0,4);
 
-    const result =  mostRecent.map((album)=> (
+    const result =  mostRecent.map((album, index)=> (
       <Album className="homeTile"
+      index={index}
       title={album.title}
       date={album.released ? album.released : album.recorded}
       recording_technique={album.recording_technique}

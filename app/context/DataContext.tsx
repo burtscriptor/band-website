@@ -1,25 +1,11 @@
 'use client';
 import React, { useEffect } from 'react';
 import { supabase } from "../../lib/supabase";
-
-type UserFilters = {
-    year: string;
-    creative_process: string;
-    location: string;
-    recording_type: string;
-    personnel: string;
-};
 import { createContext, useContext, useState } from 'react';
 
 const DataContext = createContext<{
     albums: any[];
     setAlbums: (albums: any[]) => void;
-
-    filter: boolean;
-    setFilter: (filter: boolean) => void;
-
-    userFilters: any;
-    setUserFilters: (userFilters: UserFilters) => void;
 
     spotifyData: any;
     setSpotifyData: (data: any) => void;

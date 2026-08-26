@@ -4,13 +4,13 @@ import { useData } from "./context/DataContext";
 import Styles from "./page.module.css";
 import RecentAlbums from "@/components/RecentAlbums";
 import SpotifyTopSongs from "@/components/SpotifyTopSongs";
-import { DataContextType } from "@/types/types";
+import { DataContextType, AlbumType, FilteredTrack } from "@/types/types";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const useContext: DataContextType = useData();
-  const [albums, setAlbums] = useState([]);
-  const [spotifyData, setSpotifyData] = useState([]);
+  const [albums, setAlbums] = useState<AlbumType[]>([]);
+  const [spotifyData, setSpotifyData] = useState<FilteredTrack[]>([]);
 
 
   const getData = () => {

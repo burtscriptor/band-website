@@ -14,6 +14,7 @@ export interface  AlbumType {
 export interface SpotifyTrack {
     name: string;
     album: {
+        id: string;
         name: string;
         images: { url: string }[];
     };
@@ -25,8 +26,9 @@ export interface SpotifyTrack {
 export interface FilteredTrack {
     name: string;
     album: string;
-    image_url: string;
+    image: string;
     url: string;
+    id: string;
 }
 
 export interface SpotifyResponse {
@@ -34,7 +36,7 @@ export interface SpotifyResponse {
 }
 
 export interface SearchBarProps {
-  filterFunction: (searchTerm: string) => void;
+  filterFunction: (year: string, creative_process: string, recording_technique: string) => void;
   albums: AlbumType[];          // Replace AlbumType with your album type
   filteredAlbums: AlbumType[];
   setReverse: (value: boolean) => void;
@@ -43,5 +45,5 @@ export interface SearchBarProps {
 
 export interface DataContextType {
   albums: AlbumType[];
-  spotifyData: SpotifyTrack[];
+  spotifyData: FilteredTrack[];
 }
