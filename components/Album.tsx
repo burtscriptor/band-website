@@ -12,9 +12,9 @@ interface AlbumDetailProps {
   recording_technique: string;
   id: number;
   image_url: string;
-  spotify_id: string;
-  bandcamp_id: string;
-  bandcamp_page_url: string;
+  spotify_id?: string;
+  bandcamp_id?: string;
+  bandcamp_page_url?: string;
   className:  string;
 }
 

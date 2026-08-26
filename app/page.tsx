@@ -2,51 +2,63 @@
 
 import { useData } from "./context/DataContext";
 import Styles from "./page.module.css";
-import { AlbumType, SpotifyTrack } from "@/types/types";
+import RecentAlbums from "@/components/RecentAlbums";
+import SpotifyTopSongs from "@/components/SpotifyTopSongs";
+import { DataContextType, AlbumType, FilteredTrack } from "@/types/types";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const dataContext = useData(); 
+  const useContext: DataContextType = useData();
   const [albums, setAlbums] = useState<AlbumType[]>([]);
-  const [spotifyData, setSpotifyData] = useState<SpotifyTrack[]>([]);
+  const [spotifyData, setSpotifyData] = useState<FilteredTrack[]>([]);
+
 
   const getData = () => {
-    const storedData = localStorage.getItem("data");
+    const storedData = localStorage.getItem('data');
 
     if (storedData) {
+
       const parsed = JSON.parse(storedData);
       const isStale = Date.now() - parsed.timeStamp > 1000 * 60 * 60;
 
       if (!isStale) {
+
         setAlbums(parsed.albums);
+
       } else {
-        setAlbums(dataContext.albums);
+
+        setAlbums(useContext.albums || []);
+
       }
 
-      setSpotifyData(dataContext.spotifyData);
-    } else {
-      setAlbums(dataContext.albums);
-      setSpotifyData(dataContext.spotifyData);
+      setSpotifyData(useContext.spotifyData || []);
 
-      localStorage.setItem(
-        "data",
-        JSON.stringify({
-          albums: dataContext.albums,
-          spotifySongs: dataContext.spotifyData,
-          timeStamp: Date.now(),
-        })
-      );
+    } else {
+      
+      setAlbums(useContext.albums);
+      setSpotifyData(useContext.spotifyData || []);
+      localStorage.setItem('data', JSON.stringify({
+        'albums': useContext.albums,
+        'spotifySongs': useContext.spotifyData,
+        'timeStamp': Date.now()
+
+      }))
+
     }
+
   };
+
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [])
 
   return (
     <div className={Styles.pageContainer}>
       <div className={Styles.lowerContainer}>
-    
+        <SpotifyTopSongs tracks={spotifyData || []} />
+        <RecentAlbums albums={albums || []} />
+        <div><p>Hey There Content coming soon</p></div>
       </div>
       <div className={Styles.upperContainer}></div>
     </div>

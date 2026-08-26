@@ -3,9 +3,9 @@ import { SpotifyTrack, FilteredTrack, SpotifyResponse } from "@/types/types";
 
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
-const ARTIST_ID = process.env.SPOTIFY_ARTIST_ID;
+const ARTIST_ID = process.env.SPOTIFY_ARTIST_ID!;
 const All_ALBUMS = process.env.SPOTIFY_ALL_ALBUMS;
-const TOKEN_ENDPOINT = process.env.SPOTIFY_TOKEN_ENDPOINT;
+const TOKEN_ENDPOINT = process.env.SPOTIFY_TOKEN_ENDPOINT!;
 
 export const getSpotifyData = async (): Promise<FilteredTrack[] | null> => {
     
@@ -18,7 +18,7 @@ export const getSpotifyData = async (): Promise<FilteredTrack[] | null> => {
             method: "GET",
             headers: {
                 "Authorization": `Bearer ${token}`,
-                "Content-Type": "application/x-www-form-urlencoded"
+                 "Content-Type": "application/x-www-form-urlencoded"
             },
             next: { revalidate: 3600 }
         });
@@ -30,12 +30,8 @@ export const getSpotifyData = async (): Promise<FilteredTrack[] | null> => {
         const data = await response.json();
         return filterSpotifyData(data?.tracks ?? []);
 
-    } catch (error: unknown) {
-        if (error instanceof Error) {
-            console.error("Error fetching artist data:", error.message);
-        } else {
-            console.error("Error fetching artist data:", error);
-        } 
+    } catch (error: any) {
+        console.error("Error fetching artist data:", error.response?.data || error.message);
         return null;
     }
 };
@@ -55,9 +51,9 @@ const fetchToken = async () => {
             body: data
         });
         if (!response.ok) throw new Error("Failed to fetch token");
-        const result = await response.json();
-        return result.access_token;
-    } catch (error: any) {
+            const result = await response.json();
+            return result.access_token;
+     } catch (error: any) {
         console.error("Error fetching token:", error.message);
     }
 };
@@ -66,7 +62,7 @@ const filterSpotifyData = (spotify_data: SpotifyTrack[]): FilteredTrack[] => {
     return spotify_data.map((element) => ({
         name: element.name,
         album: element.album.name,
-        image: element.album.images?.[1]?.url || element.album.images?.[0]?.url || "",
+        image: element.album.images?.[1]?.url || element.album.images?.[0]?.url || "", 
         url: element.external_urls.spotify,
         id: element.album.id,
     }));

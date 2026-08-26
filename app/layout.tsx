@@ -9,7 +9,8 @@ import Footer from "@/components/Footer";
 
 async function fetchData() {
   try {
-    const { data: albums, error } = await supabase.from("Albums").select("*").order('id', { ascending: true });;
+    const { data: albums, error } = await supabase.from("albums").select("*").order('id', { ascending: true });
+    if (error) console.error("Supabase Error:", error);
     const spotify = await getSpotifyData();
     return { albums, spotify };
 
@@ -27,7 +28,6 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Wollongong Discography</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
