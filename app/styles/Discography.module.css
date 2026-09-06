@@ -5,13 +5,32 @@
   flex: 1;
 }
 
+@media (max-width: 720px) {
+  .discographyContainer {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+}
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(232px, 2fr)); 
+  grid-template-columns: repeat(4, minmax(232px, 2fr));
   grid-auto-rows: minmax(325px, auto);
-  row-gap: 1px; 
+  row-gap: 1px;
   column-gap: 1px;
-  background: #ccc; 
+  background: #ccc;
+}
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .grid > * {
@@ -25,19 +44,27 @@
   align-items: center;
   justify-content: start;
   flex: 1;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .titleAndDates {
+  width: 100%;
+  max-width: var(--max-width);
   padding-left: 20px;
   padding-right: 20px;
   margin-bottom: 10px;
+  box-sizing: border-box;
 }
 
 .imageAndDetails {
+  width: 100%;
+  max-width: var(--max-width);
   border-left: 1px solid grey;
   border-right: 1px solid grey;
   padding-left: 17px;
   padding-right: 17px;
+  box-sizing: border-box;
 }
 
 .pretitle {
@@ -64,6 +91,9 @@
 
 .detailAlbumCover {
   margin-bottom: 10px;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 
 .marginBottom {
@@ -85,7 +115,8 @@
 .playLinkWrapper {
   display: flex;
   flex-direction: row;
-  gap:4px;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
