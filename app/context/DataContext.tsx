@@ -1,37 +1,21 @@
 'use client';
-import React, { useEffect, createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { supabase } from "../../lib/supabase";
-import { createContext, useContext, useState } from 'react';
 
 const DataContext = createContext<{
   albums: any[];
   setAlbums: (albums: any[]) => void;
 
-    spotifyData: any;
-    setSpotifyData: (data: any) => void;
-
-} | null>(null);;
-
   spotifyData: any;
   setSpotifyData: (data: any) => void;
+
 } | null>(null);
 
 export function DataProvider({ children, initialData }: { children: React.ReactNode; initialData: any }) {
   const [albums, setAlbums] = useState<any[]>(initialData.albums);
   const [spotifyData, setSpotifyData] = useState<any>(initialData.spotify);
 
-  const [filter, setFilter] = useState<boolean>(false);
-  const [userFilters, setUserFilters] = useState<UserFilters>({
-    year: "",
-    creative_process: "",
-    location: "",
-    recording_type: "",
-    personnel: "",
-  });
-
-    const [spotifyData, setSpotifyData] = useState(initialData.spotify);
-
-    return <DataContext.Provider value={{ albums, setAlbums, spotifyData, setSpotifyData }}>{children}</DataContext.Provider>
+  return <DataContext.Provider value={{ albums, setAlbums, spotifyData, setSpotifyData }}>{children}</DataContext.Provider>
 };
 
 export function useData() {
