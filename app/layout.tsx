@@ -7,11 +7,6 @@ import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 
 
-// TODO: Cache Components adoption. Refactor this route so this opt-out can be removed.
-// See: https://nextjs.org/docs/app/guides/migrating-to-cache-components
-export const instant = false;
-
-
 async function fetchData() {
   try {
     const { data: albums, error } = await supabase.from("albums").select("*").order('id', { ascending: true });
