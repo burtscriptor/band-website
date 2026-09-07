@@ -12,6 +12,8 @@ const DataContext = createContext<{
 } | null>(null);
 
 export function DataProvider({ children, initialData }: { children: React.ReactNode; initialData: any }) {
+  const [albums, setAlbums] = useState<any[]>(initialData.albums);
+  const [spotifyData, setSpotifyData] = useState<any>(initialData.spotify);
 
   return <DataContext.Provider value={{ albums, setAlbums, spotifyData, setSpotifyData }}>{children}</DataContext.Provider>
 };
