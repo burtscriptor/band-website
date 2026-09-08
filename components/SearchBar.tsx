@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { useData, generateCreativeProcess } from '@/app/context/DataContext';
+import { generateCreativeProcess } from '@/app/context/DataContext';
 import Styles from '../app/styles/SearchBar.module.css';
 import { SearchBarProps } from '@/types/types';
 
@@ -11,7 +11,7 @@ function SearchBar({ filterFunction, albums, filteredAlbums, setReverse, reverse
   const [process, setProcess] = useState('Clear');
   const [type, setType] = useState('Clear');
 
-  const creativeProcess = generateCreativeProcess();
+  const creativeProcess = generateCreativeProcess(albums);
   const years = Array.from({ length: 2030 - 2012 + 1 }, (_, i) => 2012 + i);
   const recordingType = ['Studio', 'Live'];
 

@@ -26,9 +26,7 @@ export function useData() {
     return context;
 };
 
-export function generateCreativeProcess() {
-    const { albums } = useData();
-
+export function generateCreativeProcess(albums: any[]) {
     if (!albums) return [];
 
     const result = albums.reduce((acc: string[], album) => {

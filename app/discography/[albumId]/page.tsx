@@ -6,7 +6,7 @@ import { useData } from '@/app/context/DataContext';
 import AlbumDetail from '@/components/AlbumDetail';
 import styles from '@/app/styles/Discography.module.css'
 
-const page = () => {
+const Page = () => {
   const { albums } = useData();
   const params = useParams<{ albumId: string }>();
   const id = parseInt(params.albumId, 10); // how will this handle 101 etc?
@@ -34,4 +34,4 @@ const page = () => {
   )
 };
 
-export default page;
+export default Page;
