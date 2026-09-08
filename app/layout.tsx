@@ -17,7 +17,7 @@ async function fetchData() {
   } catch (error) {
     console.error("Supabase Error:", error);
   }
-};
+}
 
 export default async function RootLayout({
   children,
@@ -43,4 +43,4 @@ export default async function RootLayout({
       </body>
     </html>
   );
-};
+}
