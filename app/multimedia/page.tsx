@@ -6,7 +6,7 @@ function MultiMedia() {
       Multimedia
     </div>
   )
-};
+}
 
 export default MultiMedia;
 
