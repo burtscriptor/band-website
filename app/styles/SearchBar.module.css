@@ -6,10 +6,12 @@
 .searchBarContainer {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  box-sizing: border-box; 
+  row-gap: 10px;
+  box-sizing: border-box;
   width: 100%;
 }
 
@@ -89,6 +91,7 @@
 
 .creativeProcessDropDown {
   width: 400px;
+  max-width: 90vw;
 }
 
 .typeDropdown .customSelectBox {
@@ -107,14 +110,55 @@
 .reverseButton {
   background-image: url('../.././public/reverse_2.svg');
   background-repeat: no-repeat;
-  background-position: center;   
-  background-size: 15px 15px;    
+  background-position: center;
+  background-size: 15px 15px;
   background-color:transparent;
   color:grey;
-  width: 20px;   
-  height: 20px;  
-  stroke-width: 2;  
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
   border: none;
   cursor: pointer;
   margin-left: 8px;
+}
+
+@media (max-width: 480px) {
+  .customSelectWrapper {
+    margin-right: 6px;
+    margin-bottom: 6px;
+  }
+
+  .customSelectBox {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 28px;
+    padding-right: 6px;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+  }
+
+  .counter {
+    letter-spacing: 1px;
+  }
+
+  /* Dropdown lists are anchored to their (often centrally-positioned)
+     trigger; on narrow screens that can push the list past the edge
+     of the viewport, so re-center it and cap its width instead. */
+  .customSelectDropdown {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    max-width: min(280px, calc(100vw - 32px));
+  }
+
+  /* Bigger tap targets for dropdown options and the reverse button. */
+  .customSelectOption {
+    padding: 12px 10px;
+  }
+
+  .reverseButton {
+    width: 32px;
+    height: 32px;
+    margin-left: 4px;
+  }
 }

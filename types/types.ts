@@ -24,14 +24,21 @@ export interface SpotifyTrack {
     };
 }
 
+export interface FilteredTrack {
+    name: string;
+    album: string;
+    image: string;
+    url: string;
+    id: string;
+}
 
 export interface SpotifyResponse {
     tracks: SpotifyTrack[];
 }
 
 export interface SearchBarProps {
-  filterFunction: ( year: string, process: string, type: string ) => void;
-  albums: AlbumType[];          
+  filterFunction: (year: string, creative_process: string, recording_technique: string) => void;
+  albums: AlbumType[];          // Replace AlbumType with your album type
   filteredAlbums: AlbumType[];
   setReverse: (value: boolean) => void;
   reverse: boolean;
@@ -39,14 +46,5 @@ export interface SearchBarProps {
 
 export interface DataContextType {
   albums: AlbumType[];
-  spotifyData: SpotifyTrack[];
-}
-
-export interface FilteredTrack {
-  name: string;
-  album: string;
-  image: string;
-  url: string;
-  id: string;
-
+  spotifyData: FilteredTrack[];
 }

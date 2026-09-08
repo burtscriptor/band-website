@@ -23,9 +23,9 @@
 
 .socialMedia  {
     display: flex;
+    align-items: center;
     height: auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 8px 20px;
 }
 
 .colorWhite img {

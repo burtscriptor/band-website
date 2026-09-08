@@ -6,7 +6,7 @@ function Contact() {
         Contact
     </div>
   )
-};
+}
 
 export default Contact;
 
