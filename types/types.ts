@@ -12,6 +12,7 @@ export interface  AlbumType {
 }
 
 export interface SpotifyTrack {
+    image_url: string;
     name: string;
     album: {
         id: string;

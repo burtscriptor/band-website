@@ -36,7 +36,6 @@ const AlbumDetail: React.FC<AlbumDetailProps> = ({
     bandcamp_id,
     bandcamp_page_url
 }) => {
-console.log('ad bancamp page url:', bandcamp_page_url)
     const noEmbeddedPlayer = <p className={styles.noPlayerMessage}>This is exclusive content not published on Spotify or Bandcamp,
         contact us on socials for listening options.</p>
 

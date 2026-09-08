@@ -3,8 +3,8 @@ import React, { createContext, useContext, useState } from 'react';
 import { supabase } from "../../lib/supabase";
 
 const DataContext = createContext<{
-    albums: any[];
-    setAlbums: (albums: any[]) => void;
+  albums: any[];
+  setAlbums: (albums: any[]) => void;
 
   spotifyData: any;
   setSpotifyData: (data: any) => void;
